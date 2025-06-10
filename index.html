@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Prompt Crafter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --font-family-body: 'Fira Sans', sans-serif;
+        --font-family-headings: 'Press Start 2P', monospace;
+      }
+      body {
+        background-color: #111827; /* bg-gray-900 */
+        color: #d1d5db; /* text-gray-300 */
+        font-family: var(--font-family-body);
+      }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #1f2937; }
+      ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+      .font-pixel { font-family: var(--font-family-headings); }
+      input, textarea, select, button { font-family: var(--font-family-body); }
+      ::placeholder { font-family: var(--font-family-body); opacity: 1; }
+      .hidden-section { display: none; }
+    </style>
+</head>
+<body>
+    <noscript>Você precisa habilitar o JavaScript para rodar este aplicativo.</noscript>
+    
+    <div class="min-h-screen bg-slate-900 text-slate-200 p-4 sm:p-8 flex flex-col items-center">
+        <header class="w-full max-w-4xl mb-10 text-center">
+            <h1 class="text-4xl sm:text-5xl font-pixel text-green-400 tracking-wider">Nexus Prompt Crafter</h1>
+            <p class="text-slate-400 mt-2 text-sm sm:text-base">Construa prompts detalhados e crie conteúdo educacional incrível para o Nexus!</p>
+        </header>
+
+        <main class="w-full max-w-4xl bg-slate-800 shadow-2xl rounded-lg p-6 sm:p-10">
+            <form id="prompt-form">
+                
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">I. Objetivo Principal do Conteúdo</h2>
+                <div class="mb-6">
+                    <label for="objetivoPrincipal" class="block text-sm font-medium text-slate-300 mb-2">Descreva o objetivo principal do conteúdo a ser gerado.</label>
+                    <textarea id="objetivoPrincipal" name="objetivoPrincipal" rows="3" placeholder="Ex: Gerar um desafio matemático para alunos do ensino médio." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                </div>
+
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">II. Disciplina</h2>
+                <div class="mb-6">
+                    <label for="disciplina" class="block text-sm font-medium text-slate-300 mb-2">Selecione a disciplina.</label>
+                    <select id="disciplina" name="disciplina" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                </div>
+
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">III. Tópico/Conteúdo Específico</h2>
+                <div class="mb-6">
+                    <label for="topicoEspecifico" class="block text-sm font-medium text-slate-300 mb-2">Especifique o tópico ou conteúdo.</label>
+                    <textarea id="topicoEspecifico" name="topicoEspecifico" rows="3" placeholder="Detalhe o tópico, sub-tópico, ou habilidade específica." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    <p class="mt-1.5 text-xs text-slate-400">Seja o mais específico possível para melhores resultados. Ex: 'Funções de Primeiro Grau e suas aplicações no cotidiano' para Matemática, ou 'Uso da crase em adjuntos adverbiais' para Língua Portuguesa.</p>
+                </div>
+
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">IV. Tipo de Recurso/Formato</h2>
+                <div class="mb-6">
+                    <label for="tipoRecurso" class="block text-sm font-medium text-slate-300 mb-2">Qual tipo de recurso ou formato você precisa?</label>
+                    <select id="tipoRecurso" name="tipoRecurso" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                </div>
+                <div id="section-outro" class="hidden-section">
+                    <div class="mb-6 mt-4">
+                        <label for="tipoRecursoOutroEspecificar" class="block text-sm font-medium text-slate-300 mb-2">Especifique o tipo de recurso</label>
+                        <input type="text" id="tipoRecursoOutroEspecificar" name="tipoRecursoOutroEspecificar" placeholder="Especifique o tipo de recurso" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm">
+                    </div>
+                </div>
+
+                <div id="section-desafio" class="hidden-section">
+                    <h3 class="text-xl font-pixel text-green-300 mt-8 mb-4">IV.A. Detalhes para "Desafio"</h3>
+                    <fieldset class="mb-6">
+                        <legend class="block text-sm font-medium text-slate-300 mb-2">Nível:</legend>
+                        <div id="nivel-desafio-options" class="space-y-2 sm:space-y-0 sm:flex sm:space-x-4 flex-wrap"></div>
+                    </fieldset>
+                    <div class="mb-6">
+                        <p class="block text-sm font-medium text-slate-300 mb-2">Formato do Problema:</p>
+                        <div id="formato-problema-options"></div>
+                    </div>
+                    <div class="flex items-center mb-2 mb-4">
+                        <input id="incluirDica" name="incluirDica" type="checkbox" class="h-4 w-4 text-green-500 bg-slate-700 border-slate-600 rounded focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-slate-800 cursor-pointer">
+                        <label for="incluirDica" class="ml-2 text-sm text-slate-300 cursor-pointer">Incluir Dica?</label>
+                    </div>
+                    <div id="dica-container" class="hidden-section mb-6">
+                        <label for="dicaConteudo" class="block text-sm font-medium text-slate-300 mb-2">Dica:</label>
+                        <textarea id="dicaConteudo" name="dicaConteudo" placeholder="Digite a dica aqui..." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                    <div class="flex items-center mb-2 mb-4">
+                        <input id="fornecerSolucao" name="fornecerSolucao" type="checkbox" class="h-4 w-4 text-green-500 bg-slate-700 border-slate-600 rounded focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-slate-800 cursor-pointer">
+                        <label for="fornecerSolucao" class="ml-2 text-sm text-slate-300 cursor-pointer">Fornecer Solução Completa?</label>
+                    </div>
+                    <div id="solucao-container" class="hidden-section mb-6">
+                        <label for="solucaoConteudo" class="block text-sm font-medium text-slate-300 mb-2">Solução Completa:</label>
+                        <textarea id="solucaoConteudo" name="solucaoConteudo" placeholder="Digite a solução completa aqui..." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label for="requisitosAdicionaisDesafio" class="block text-sm font-medium text-slate-300 mb-2">Requisitos Adicionais do Desafio:</label>
+                        <textarea id="requisitosAdicionaisDesafio" name="requisitosAdicionais" placeholder="Ex: O problema deve envolver o cálculo de área e perímetro de figuras compostas." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                </div>
+                
+                <div id="section-expositivo" class="hidden-section">
+                     <h3 class="text-xl font-pixel text-green-300 mt-8 mb-4">IV.B. Detalhes para "Material Expositivo/Explicação"</h3>
+                     <fieldset class="mb-6">
+                        <legend class="block text-sm font-medium text-slate-300 mb-2">Profundidade:</legend>
+                        <div id="profundidade-expositivo-options" class="space-y-2 sm:space-y-0 sm:flex sm:space-x-4 flex-wrap"></div>
+                    </fieldset>
+                    <div class="mb-6">
+                        <label for="estiloEscritaExpositivo" class="block text-sm font-medium text-slate-300 mb-2">Estilo de Escrita:</label>
+                        <select id="estiloEscritaExpositivo" name="estiloEscrita" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                    </div>
+                    <div class="mb-6">
+                        <p class="block text-sm font-medium text-slate-300 mb-2">Elementos a Incluir:</p>
+                        <div id="elementos-incluir-options"></div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="requisitosAdicionaisExpositivo" class="block text-sm font-medium text-slate-300 mb-2">Requisitos Adicionais da Explicação:</label>
+                        <textarea id="requisitosAdicionaisExpositivo" name="requisitosAdicionais" placeholder="Ex: Abordar as aplicações da fotossíntese na agricultura." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                </div>
+
+                <div id="section-midias" class="hidden-section">
+                    <h3 class="text-xl font-pixel text-green-300 mt-8 mb-4">IV.C. Detalhes para "Conteúdo para Mídias"</h3>
+                    <div class="mb-6">
+                        <label for="tipoMidia" class="block text-sm font-medium text-slate-300 mb-2">Tipo de Mídia:</label>
+                        <select id="tipoMidia" name="tipoMidia" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="focoTextoMidia" class="block text-sm font-medium text-slate-300 mb-2">Foco do Texto:</label>
+                        <select id="focoTextoMidia" name="focoTexto" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="comprimentoAproximadoMidia" class="block text-sm font-medium text-slate-300 mb-2">Comprimento Aproximado (Nº de palavras):</label>
+                        <input type="number" id="comprimentoAproximadoMidia" name="comprimentoAproximado" placeholder="Ex: 300" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm">
+                    </div>
+                    <div class="mb-6">
+                        <label for="requisitosAdicionaisMidia" class="block text-sm font-medium text-slate-300 mb-2">Requisitos Adicionais do Conteúdo de Mídia:</label>
+                        <textarea id="requisitosAdicionaisMidia" name="requisitosAdicionais" placeholder="Ex: Incluir um call-to-action para o usuário visitar o site." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                </div>
+
+                <div id="section-desafio-semanal" class="hidden-section">
+                    <h3 class="text-xl font-pixel text-green-300 mt-8 mb-4">IV.D. Detalhes para "Desafio Semanal (Enunciado)"</h3>
+                    <div class="mb-6">
+                        <label for="naturezaDesafioSemanal" class="block text-sm font-medium text-slate-300 mb-2">Natureza do Desafio:</label>
+                        <select id="naturezaDesafioSemanal" name="naturezaDesafio" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="tituloSugeridoDesafioSemanal" class="block text-sm font-medium text-slate-300 mb-2">Título Sugerido:</label>
+                        <input type="text" id="tituloSugeridoDesafioSemanal" name="tituloSugerido" placeholder="Ex: O Dilema do Viajante no Tempo" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm">
+                    </div>
+                    <div class="mb-6">
+                        <label for="instrucaoPrincipalDesafioSemanal" class="block text-sm font-medium text-slate-300 mb-2">Instrução Principal para o Leitor:</label>
+                        <textarea id="instrucaoPrincipalDesafioSemanal" name="instrucaoPrincipal" placeholder="Ex: Qual escolha você faria e por quê?" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                </div>
+
+                <div id="section-artigo" class="hidden-section">
+                    <h3 class="text-xl font-pixel text-green-300 mt-8 mb-4">IV.E. Detalhes para "Artigo Científico/Análise"</h3>
+                     <div class="mb-6">
+                        <p class="block text-sm font-medium text-slate-300 mb-2">Estrutura Típica (pré-selecionado):</p>
+                        <div id="estrutura-artigo-options"></div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="nivelFormalidadeArtigo" class="block text-sm font-medium text-slate-300 mb-2">Nível de Formalidade:</label>
+                        <select id="nivelFormalidadeArtigo" name="nivelFormalidade" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="requisitosAdicionaisArtigo" class="block text-sm font-medium text-slate-300 mb-2">Requisitos Adicionais do Artigo:</label>
+                        <textarea id="requisitosAdicionaisArtigo" name="requisitosAdicionais" placeholder="Ex: Focar na análise crítica das fontes X e Y." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">V. Público Alvo (Opcional)</h2>
+                <div class="mb-6">
+                    <label for="publicoAlvo" class="block text-sm font-medium text-slate-300 mb-2">Para quem este conteúdo se destina?</label>
+                    <input type="text" id="publicoAlvo" name="publicoAlvo" placeholder="Ex: Estudantes do 7º ano do Ensino Fundamental, Iniciantes em programação." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm">
+                </div>
+
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">VI. Metodologia de Ensino (Opcional)</h2>
+                <div class="mb-6">
+                    <label for="metodologiaEnsino" class="block text-sm font-medium text-slate-300 mb-2">Metodologia Preferida:</label>
+                    <textarea id="metodologiaEnsino" name="metodologiaEnsino" rows="3" placeholder="Ex: Aprendizagem Baseada em Projetos, Gamificação, Sala de Aula Invertida..." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    <p class="mt-1.5 text-xs text-slate-400">Indique a abordagem pedagógica que gostaria que o conteúdo refletisse.</p>
+                </div>
+
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">VII. Detalhes Adicionais / Requisitos Finais</h2>
+                 <div class="mb-6">
+                    <label for="detalhesAdicionais" class="block text-sm font-medium text-slate-300 mb-2">Outros detalhes, restrições ou requisitos para o prompt final?</label>
+                    <textarea id="detalhesAdicionais" name="detalhesAdicionais" rows="4" placeholder="Ex: Linguagem: Português do Brasil. Tom: Engajador. Formato de saída: HTML. Evitar jargões excessivos ou explicá-los." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                </div>
+                 <div class="mb-6">
+                    <label for="linguagemSaida" class="block text-sm font-medium text-slate-300 mb-2">Linguagem de Saída do Conteúdo Gerado:</label>
+                    <select id="linguagemSaida" name="linguagemSaida" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                </div>
+                <div class="mb-6">
+                    <label for="tomVoz" class="block text-sm font-medium text-slate-300 mb-2">Tom de Voz Desejado no Conteúdo Gerado:</label>
+                    <select id="tomVoz" name="tomVoz" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                </div>
+                <div class="mb-6">
+                    <label for="formatoSaida" class="block text-sm font-medium text-slate-300 mb-2">Formato de Saída Desejado do Conteúdo Gerado:</label>
+                    <select id="formatoSaida" name="formatoSaida" class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></select>
+                </div>
+                
+                <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button type="button" id="generate-prompt-btn" class="w-full sm:w-auto flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+                        Gerar Prompt
+                    </button>
+                    <button type="button" id="clear-form-btn" class="w-full sm:w-auto bg-slate-600 hover:bg-slate-700 text-slate-100 font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-opacity-75">
+                        Limpar Formulário
+                    </button>
+                </div>
+            </form>
+
+            <div id="generated-prompt-container" class="mt-12 hidden-section">
+                <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">Prompt Gerado</h2>
+                <textarea readonly id="generated-prompt-area" class="w-full h-72 p-4 bg-slate-900 border border-slate-700 rounded-md text-slate-300 text-sm font-mono whitespace-pre-wrap shadow-inner" aria-label="Prompt Gerado"></textarea>
+                <button type="button" id="copy-prompt-btn" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Copiar Prompt
+                </button>
+                <p id="copy-success-msg" class="mt-2 text-sm text-green-400"></p>
+            </div>
+        </main>
+        <footer class="w-full max-w-4xl mt-12 text-center text-slate-500 text-xs">
+            <p>&copy; 2024 Nexus Prompt Crafter. Inspirando a educação do futuro.</p>
+        </footer>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- CONSTANTS FROM "constants.ts" ---
+    const ResourceType = {
+        DESAFIO: "Desafio",
+        EXPOSITIVO: "Material Expositivo/Explicação",
+        MIDIAS: "Conteúdo para Mídias",
+        DESAFIO_SEMANAL: "Desafio Semanal (Enunciado)",
+        ARTIGO: "Artigo Científico/Análise",
+        OUTRO: "Outro",
+    };
+
+    const DISCIPLINAS_OPTIONS = [
+        { value: "Matemática", label: "Matemática" }, { value: "Língua Portuguesa", label: "Língua Portuguesa" }, { value: "Programação e Robótica", label: "Programação e Robótica" }, { value: "Geografia", label: "Geografia" }, { value: "História", label: "História" }, { value: "Língua Inglesa", label: "Língua Inglesa" }, { value: "Educação Física", label: "Educação Física" }, { value: "Física", label: "Física" }, { value: "Química", label: "Química" }, { value: "Biologia", label: "Biologia" }, { value: "Filosofia", label: "Filosofia" }, { value: "Sociologia", label: "Sociologia" },
+    ];
+
+    const TIPO_RECURSO_OPTIONS = Object.values(ResourceType).map(value => ({ value, label: value }));
+    const NIVEL_DESAFIO_OPTIONS = [ { value: "Fácil", label: "Fácil" }, { value: "Intermediário", label: "Intermediário" }, { value: "Difícil", label: "Difícil" }, { value: "Hardcore", label: "Hardcore" }];
+    const FORMATO_PROBLEMA_OPTIONS = [ { value: "Múltipla escolha", label: "Múltipla escolha" }, { value: "Resposta curta", label: "Resposta curta" }, { value: "Desenvolvimento passo a passo", label: "Desenvolvimento passo a passo" }, { value: "Problema de lógica", label: "Problema de lógica" }, { value: "Estudo de caso", label: "Estudo de caso" }, { value: "Projeto prático", label: "Projeto prático" }];
+    const PROFUNDIDADE_EXPOSITIVO_OPTIONS = [ { value: "Introdução ao tópico", label: "Introdução ao tópico" }, { value: "Explicação detalhada", label: "Explicação detalhada" }, { value: "Resumo para revisão", label: "Resumo para revisão" }];
+    const ESTILO_ESCRITA_EXPOSITIVO_OPTIONS = [ { value: "Didático", label: "Didático" }, { value: "Formal", label: "Formal" }, { value: "Informal", label: "Informal" }, { value: "Com analogias", label: "Com analogias" }];
+    const ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS = [ { value: "Exemplos práticos", label: "Exemplos práticos" }, { value: "Divisão em seções com subtítulos", label: "Divisão em seções com subtítulos" }, { value: "Glossário de termos chave", label: "Glossário de termos chave" }, { value: "Sugestão de leituras/recursos adicionais", label: "Sugestão de leituras/recursos adicionais" }];
+    const TIPO_MIDIA_OPTIONS = [ { value: "Imagem", label: "Imagem" }, { value: "Vídeo", label: "Vídeo" }, { value: "Áudio", label: "Áudio" }, { value: "Infográfico", label: "Infográfico" }];
+    const FOCO_TEXTO_MIDIA_OPTIONS = [ { value: "Descritivo", label: "Descritivo" }, { value: "Reflexivo", label: "Reflexivo" }, { value: "Análise técnica", label: "Análise técnica" }, { value: "Contexto histórico", label: "Contexto histórico" }];
+    const NATUREZA_DESAFIO_SEMANAL_OPTIONS = [ { value: "Enigma", label: "Enigma" }, { value: "Problema aberto", label: "Problema aberto" }, { value: "Questão interdisciplinar", label: "Questão interdisciplinar" }, { value: "Provocação filosófica", label: "Provocação filosófica" }];
+    const ESTRUTURA_ARTIGO_OPTIONS = [ { value: "Introdução", label: "Introdução" }, { value: "Metodologia (se aplicável)", label: "Metodologia (se aplicável)" }, { value: "Resultados (se aplicável)", label: "Resultados (se aplicável)" }, { value: "Discussão", label: "Discussão" }, { value: "Conclusão", label: "Conclusão" }, { value: "Referências", label: "Referências" }];
+    const NIVEL_FORMALIDADE_ARTIGO_OPTIONS = [ { value: "Acadêmico (rigoroso)", label: "Acadêmico (rigoroso)" }, { value: "Divulgação Científica (acessível)", label: "Divulgação Científica (acessível)" }];
+    const LINGUAGEM_SAIDA_OPTIONS = [ { value: "Português do Brasil", label: "Português do Brasil" }, { value: "Inglês", label: "Inglês" }];
+    const TOM_VOZ_OPTIONS = [ { value: "Informativo", label: "Informativo" }, { value: "Engajador", label: "Engajador" }, { value: "Formal", label: "Formal" }, { value: "Divertido", label: "Divertido" }, { value: "Desafiador", label: "Desafiador" }, { value: "Didático", label: "Didático" }, { value: "Sóbrio", label: "Sóbrio" }, { value: "Inspirador", label: "Inspirador" }];
+    const FORMATO_SAIDA_OPTIONS = [ { value: "Texto Simples", label: "Texto Simples" }, { value: "Markdown", label: "Markdown" }, { value: "HTML (básico)", label: "HTML (básico)" }, { value: "JSON Estruturado", label: "JSON Estruturado" }];
+
+    const getInitialFormData = () => ({
+        objetivoPrincipal: "", disciplina: DISCIPLINAS_OPTIONS[0].value, topicoEspecifico: "", tipoRecurso: ResourceType.DESAFIO, tipoRecursoOutroEspecificar: "",
+        detalhesDesafio: { nivel: NIVEL_DESAFIO_OPTIONS[0].value, formatoProblema: [], incluirDica: false, dicaConteudo: "", fornecerSolucao: false, solucaoConteudo: "", requisitosAdicionais: "" },
+        detalhesExpositivo: { profundidade: PROFUNDIDADE_EXPOSITIVO_OPTIONS[0].value, estiloEscrita: ESTILO_ESCRITA_EXPOSITIVO_OPTIONS[0].value, elementosIncluir: [], requisitosAdicionais: "" },
+        detalhesMidias: { tipoMidia: TIPO_MIDIA_OPTIONS[0].value, focoTexto: FOCO_TEXTO_MIDIA_OPTIONS[0].value, comprimentoAproximado: "", requisitosAdicionais: "" },
+        detalhesDesafioSemanal: { naturezaDesafio: NATUREZA_DESAFIO_SEMANAL_OPTIONS[0].value, tituloSugerido: "", instrucaoPrincipal: "" },
+        detalhesArtigo: { estruturaTipica: ESTRUTURA_ARTIGO_OPTIONS.map(opt => opt.value), nivelFormalidade: NIVEL_FORMALIDADE_ARTIGO_OPTIONS[0].value, requisitosAdicionais: "" },
+        publicoAlvo: "", metodologiaEnsino: "", detalhesAdicionais: "", linguagemSaida: LINGUAGEM_SAIDA_OPTIONS[0].value, tomVoz: TOM_VOZ_OPTIONS[0].value, formatoSaida: FORMATO_SAIDA_OPTIONS[0].value,
+    });
+
+    let formData = getInitialFormData();
+    let generatedPrompt = '';
+
+    // --- DOM ELEMENT REFERENCES ---
+    const form = document.getElementById('prompt-form');
+    const generateBtn = document.getElementById('generate-prompt-btn');
+    const clearBtn = document.getElementById('clear-form-btn');
+    const copyBtn = document.getElementById('copy-prompt-btn');
+    const generatedPromptContainer = document.getElementById('generated-prompt-container');
+    const generatedPromptArea = document.getElementById('generated-prompt-area');
+    const copySuccessMsg = document.getElementById('copy-success-msg');
+    
+    // --- HELPER FUNCTIONS FOR POPULATING FORM ---
+    function populateSelect(selectId, options) {
+        const select = document.getElementById(selectId);
+        options.forEach(opt => {
+            const optionEl = document.createElement('option');
+            optionEl.value = opt.value;
+            optionEl.textContent = opt.label;
+            optionEl.className = "bg-slate-800 text-slate-100";
+            select.appendChild(optionEl);
+        });
+    }
+
+    function populateRadioGroup(containerId, options, name) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        options.forEach(opt => {
+            const id = `${name}-${opt.value.replace(/\s+/g, '-')}`;
+            container.innerHTML += `
+                <div class="flex items-center">
+                    <input id="${id}" name="${name}" type="radio" value="${opt.value}" class="h-4 w-4 text-green-500 bg-slate-700 border-slate-600 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-slate-800 cursor-pointer">
+                    <label for="${id}" class="ml-2 text-sm text-slate-300 cursor-pointer">${opt.label}</label>
+                </div>`;
+        });
+    }
+
+    function populateCheckboxGroup(containerId, options, name) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        options.forEach(opt => {
+            const id = `${name}-${opt.value.replace(/\s+/g, '-')}`;
+            container.innerHTML += `
+                <div class="flex items-center mb-2">
+                    <input id="${id}" name="${name}" type="checkbox" value="${opt.value}" class="h-4 w-4 text-green-500 bg-slate-700 border-slate-600 rounded focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-slate-800 cursor-pointer">
+                    <label for="${id}" class="ml-2 text-sm text-slate-300 cursor-pointer">${opt.label}</label>
+                </div>`;
+        });
+    }
+
+    // --- INITIAL POPULATION ---
+    function populateForm() {
+        populateSelect('disciplina', DISCIPLINAS_OPTIONS);
+        populateSelect('tipoRecurso', TIPO_RECURSO_OPTIONS);
+        populateRadioGroup('nivel-desafio-options', NIVEL_DESAFIO_OPTIONS, 'nivelDesafio');
+        populateCheckboxGroup('formato-problema-options', FORMATO_PROBLEMA_OPTIONS, 'formatoProblema');
+        populateRadioGroup('profundidade-expositivo-options', PROFUNDIDADE_EXPOSITIVO_OPTIONS, 'profundidadeExpositivo');
+        populateSelect('estiloEscritaExpositivo', ESTILO_ESCRITA_EXPOSITIVO_OPTIONS);
+        populateCheckboxGroup('elementos-incluir-options', ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS, 'elementosIncluir');
+        populateSelect('tipoMidia', TIPO_MIDIA_OPTIONS);
+        populateSelect('focoTextoMidia', FOCO_TEXTO_MIDIA_OPTIONS);
+        populateSelect('naturezaDesafioSemanal', NATUREZA_DESAFIO_SEMANAL_OPTIONS);
+        populateCheckboxGroup('estrutura-artigo-options', ESTRUTURA_ARTIGO_OPTIONS, 'estruturaTipica');
+        populateSelect('nivelFormalidadeArtigo', NIVEL_FORMALIDADE_ARTIGO_OPTIONS);
+        populateSelect('linguagemSaida', LINGUAGEM_SAIDA_OPTIONS);
+        populateSelect('tomVoz', TOM_VOZ_OPTIONS);
+        populateSelect('formatoSaida', FORMATO_SAIDA_OPTIONS);
+    }
+    
+    // --- UI UPDATE FUNCTIONS ---
+    function setFormValues(data) {
+        document.getElementById('objetivoPrincipal').value = data.objetivoPrincipal;
+        document.getElementById('disciplina').value = data.disciplina;
+        document.getElementById('topicoEspecifico').value = data.topicoEspecifico;
+        document.getElementById('tipoRecurso').value = data.tipoRecurso;
+        document.getElementById('tipoRecursoOutroEspecificar').value = data.tipoRecursoOutroEspecificar;
+
+        // Desafio
+        document.querySelectorAll('input[name="nivelDesafio"]').forEach(el => el.checked = el.value === data.detalhesDesafio.nivel);
+        document.querySelectorAll('input[name="formatoProblema"]').forEach(el => el.checked = data.detalhesDesafio.formatoProblema.includes(el.value));
+        document.getElementById('incluirDica').checked = data.detalhesDesafio.incluirDica;
+        document.getElementById('dicaConteudo').value = data.detalhesDesafio.dicaConteudo;
+        document.getElementById('fornecerSolucao').checked = data.detalhesDesafio.fornecerSolucao;
+        document.getElementById('solucaoConteudo').value = data.detalhesDesafio.solucaoConteudo;
+        document.getElementById('requisitosAdicionaisDesafio').value = data.detalhesDesafio.requisitosAdicionais;
+        
+        // Expositivo
+        document.querySelectorAll('input[name="profundidadeExpositivo"]').forEach(el => el.checked = el.value === data.detalhesExpositivo.profundidade);
+        document.getElementById('estiloEscritaExpositivo').value = data.detalhesExpositivo.estiloEscrita;
+        document.querySelectorAll('input[name="elementosIncluir"]').forEach(el => el.checked = data.detalhesExpositivo.elementosIncluir.includes(el.value));
+        document.getElementById('requisitosAdicionaisExpositivo').value = data.detalhesExpositivo.requisitosAdicionais;
+        
+        // Mídias
+        document.getElementById('tipoMidia').value = data.detalhesMidias.tipoMidia;
+        document.getElementById('focoTextoMidia').value = data.detalhesMidias.focoTexto;
+        document.getElementById('comprimentoAproximadoMidia').value = data.detalhesMidias.comprimentoAproximado;
+        document.getElementById('requisitosAdicionaisMidia').value = data.detalhesMidias.requisitosAdicionais;
+
+        // Desafio Semanal
+        document.getElementById('naturezaDesafioSemanal').value = data.detalhesDesafioSemanal.naturezaDesafio;
+        document.getElementById('tituloSugeridoDesafioSemanal').value = data.detalhesDesafioSemanal.tituloSugerido;
+        document.getElementById('instrucaoPrincipalDesafioSemanal').value = data.detalhesDesafioSemanal.instrucaoPrincipal;
+        
+        // Artigo
+        document.querySelectorAll('input[name="estruturaTipica"]').forEach(el => el.checked = data.detalhesArtigo.estruturaTipica.includes(el.value));
+        document.getElementById('nivelFormalidadeArtigo').value = data.detalhesArtigo.nivelFormalidade;
+        document.getElementById('requisitosAdicionaisArtigo').value = data.detalhesArtigo.requisitosAdicionais;
+        
+        document.getElementById('publicoAlvo').value = data.publicoAlvo;
+        document.getElementById('metodologiaEnsino').value = data.metodologiaEnsino;
+        document.getElementById('detalhesAdicionais').value = data.detalhesAdicionais;
+        document.getElementById('linguagemSaida').value = data.linguagemSaida;
+        document.getElementById('tomVoz').value = data.tomVoz;
+        document.getElementById('formatoSaida').value = data.formatoSaida;
+
+        updateConditionalSections();
+    }
+
+    function updateConditionalSections() {
+        const tipoRecurso = formData.tipoRecurso;
+        const sections = {
+            [ResourceType.DESAFIO]: 'section-desafio',
+            [ResourceType.EXPOSITIVO]: 'section-expositivo',
+            [ResourceType.MIDIAS]: 'section-midias',
+            [ResourceType.DESAFIO_SEMANAL]: 'section-desafio-semanal',
+            [ResourceType.ARTIGO]: 'section-artigo',
+            [ResourceType.OUTRO]: 'section-outro'
+        };
+
+        Object.values(sections).forEach(id => {
+            document.getElementById(id).classList.add('hidden-section');
+        });
+
+        if (sections[tipoRecurso]) {
+            document.getElementById(sections[tipoRecurso]).classList.remove('hidden-section');
+        }
+        
+        document.getElementById('dica-container').classList.toggle('hidden-section', !formData.detalhesDesafio.incluirDica);
+        document.getElementById('solucao-container').classList.toggle('hidden-section', !formData.detalhesDesafio.fornecerSolucao);
+    }
+    
+    function collectFormData() {
+        const data = getInitialFormData();
+        
+        // Top-level fields
+        data.objetivoPrincipal = document.getElementById('objetivoPrincipal').value;
+        data.disciplina = document.getElementById('disciplina').value;
+        data.topicoEspecifico = document.getElementById('topicoEspecifico').value;
+        data.tipoRecurso = document.getElementById('tipoRecurso').value;
+        data.tipoRecursoOutroEspecificar = document.getElementById('tipoRecursoOutroEspecificar').value;
+        data.publicoAlvo = document.getElementById('publicoAlvo').value;
+        data.metodologiaEnsino = document.getElementById('metodologiaEnsino').value;
+        data.detalhesAdicionais = document.getElementById('detalhesAdicionais').value;
+        data.linguagemSaida = document.getElementById('linguagemSaida').value;
+        data.tomVoz = document.getElementById('tomVoz').value;
+        data.formatoSaida = document.getElementById('formatoSaida').value;
+
+        // Nested details
+        // Desafio
+        data.detalhesDesafio.nivel = document.querySelector('input[name="nivelDesafio"]:checked')?.value || data.detalhesDesafio.nivel;
+        data.detalhesDesafio.formatoProblema = Array.from(document.querySelectorAll('input[name="formatoProblema"]:checked')).map(el => el.value);
+        data.detalhesDesafio.incluirDica = document.getElementById('incluirDica').checked;
+        data.detalhesDesafio.dicaConteudo = document.getElementById('dicaConteudo').value;
+        data.detalhesDesafio.fornecerSolucao = document.getElementById('fornecerSolucao').checked;
+        data.detalhesDesafio.solucaoConteudo = document.getElementById('solucaoConteudo').value;
+        data.detalhesDesafio.requisitosAdicionais = document.getElementById('requisitosAdicionaisDesafio').value;
+        
+        // Expositivo
+        data.detalhesExpositivo.profundidade = document.querySelector('input[name="profundidadeExpositivo"]:checked')?.value || data.detalhesExpositivo.profundidade;
+        data.detalhesExpositivo.estiloEscrita = document.getElementById('estiloEscritaExpositivo').value;
+        data.detalhesExpositivo.elementosIncluir = Array.from(document.querySelectorAll('input[name="elementosIncluir"]:checked')).map(el => el.value);
+        data.detalhesExpositivo.requisitosAdicionais = document.getElementById('requisitosAdicionaisExpositivo').value;
+        
+        // Mídias
+        data.detalhesMidias.tipoMidia = document.getElementById('tipoMidia').value;
+        data.detalhesMidias.focoTexto = document.getElementById('focoTextoMidia').value;
+        data.detalhesMidias.comprimentoAproximado = document.getElementById('comprimentoAproximadoMidia').value;
+        data.detalhesMidias.requisitosAdicionais = document.getElementById('requisitosAdicionaisMidia').value;
+        
+        // Desafio Semanal
+        data.detalhesDesafioSemanal.naturezaDesafio = document.getElementById('naturezaDesafioSemanal').value;
+        data.detalhesDesafioSemanal.tituloSugerido = document.getElementById('tituloSugeridoDesafioSemanal').value;
+        data.detalhesDesafioSemanal.instrucaoPrincipal = document.getElementById('instrucaoPrincipalDesafioSemanal').value;
+
+        // Artigo
+        data.detalhesArtigo.estruturaTipica = Array.from(document.querySelectorAll('input[name="estruturaTipica"]:checked')).map(el => el.value);
+        data.detalhesArtigo.nivelFormalidade = document.getElementById('nivelFormalidadeArtigo').value;
+        data.detalhesArtigo.requisitosAdicionais = document.getElementById('requisitosAdicionaisArtigo').value;
+
+        return data;
+    }
+
+    // --- PROMPT FORMATTING ---
+    function formatPrompt(data) {
+        let promptLines = [];
+        const addLine = (label, value, indent = 0) => {
+            const prefix = ' '.repeat(indent * 2);
+            if (value && (Array.isArray(value) ? value.length > 0 : String(value).trim() !== "")) {
+                promptLines.push(`${prefix}${label}: ${Array.isArray(value) ? value.join(', ') : value}`);
+            } else {
+                promptLines.push(`${prefix}${label}: Não especificado`);
+            }
+        };
+        const addRawLine = (value, indent = 0) => {
+            promptLines.push(' '.repeat(indent * 2) + (value || 'Não especificado'));
+        };
+
+        promptLines.push("I. Objetivo Principal do Conteúdo:");
+        addRawLine(data.objetivoPrincipal, 1);
+
+        promptLines.push("\nII. Disciplina:");
+        addRawLine(data.disciplina, 1);
+
+        promptLines.push("\nIII. Tópico/Conteúdo Específico:");
+        addRawLine(data.topicoEspecifico, 1);
+
+        promptLines.push("\nIV. Tipo de Recurso/Formato:");
+        if (data.tipoRecurso === ResourceType.OUTRO) {
+            addRawLine(`${ResourceType.OUTRO}: ${data.tipoRecursoOutroEspecificar || "Não especificado"}`, 1);
+        } else {
+            addRawLine(data.tipoRecurso, 1);
+        }
+
+        if (data.tipoRecurso === ResourceType.DESAFIO) {
+            promptLines.push("\nIV.A. Detalhes para \"Desafio\":");
+            addLine("Nível", data.detalhesDesafio.nivel, 1);
+            addLine("Formato do Problema", data.detalhesDesafio.formatoProblema, 1);
+            addLine("Incluir Dica?", data.detalhesDesafio.incluirDica ? "Sim" : "Não", 1);
+            if (data.detalhesDesafio.incluirDica) {
+                addLine("Dica", data.detalhesDesafio.dicaConteudo, 2);
+            }
+            addLine("Fornecer Solução Completa?", data.detalhesDesafio.fornecerSolucao ? "Sim" : "Não", 1);
+            if (data.detalhesDesafio.fornecerSolucao) {
+                addLine("Solução", data.detalhesDesafio.solucaoConteudo, 2);
+            }
+            addLine("Requisitos Adicionais do Desafio", data.detalhesDesafio.requisitosAdicionais, 1);
+        }
+        
+        if (data.tipoRecurso === ResourceType.EXPOSITIVO) {
+          promptLines.push("\nIV.B. Detalhes para \"Material Expositivo/Explicação\":");
+          addLine("Profundidade", data.detalhesExpositivo.profundidade, 1);
+          addLine("Estilo de Escrita", data.detalhesExpositivo.estiloEscrita, 1);
+          addLine("Elementos a Incluir", data.detalhesExpositivo.elementosIncluir, 1);
+          addLine("Requisitos Adicionais da Explicação", data.detalhesExpositivo.requisitosAdicionais, 1);
+        }
+        
+        if (data.tipoRecurso === ResourceType.MIDIAS) {
+          promptLines.push("\nIV.C. Detalhes para \"Conteúdo para Mídias\":");
+          addLine("Tipo de Mídia", data.detalhesMidias.tipoMidia, 1);
+          addLine("Foco do Texto", data.detalhesMidias.focoTexto, 1);
+          addLine("Comprimento Aproximado (palavras)", data.detalhesMidias.comprimentoAproximado, 1);
+          addLine("Requisitos Adicionais", data.detalhesMidias.requisitosAdicionais, 1);
+        }
+
+        if (data.tipoRecurso === ResourceType.DESAFIO_SEMANAL) {
+          promptLines.push("\nIV.D. Detalhes para \"Desafio Semanal (Enunciado)\":");
+          addLine("Natureza do Desafio", data.detalhesDesafioSemanal.naturezaDesafio, 1);
+          addLine("Título Sugerido", data.detalhesDesafioSemanal.tituloSugerido, 1);
+          addLine("Instrução Principal para o Leitor", data.detalhesDesafioSemanal.instrucaoPrincipal, 1);
+        }
+
+        if (data.tipoRecurso === ResourceType.ARTIGO) {
+          promptLines.push("\nIV.E. Detalhes para \"Artigo Científico/Análise\":");
+          addLine("Estrutura Típica", data.detalhesArtigo.estruturaTipica, 1);
+          addLine("Nível de Formalidade", data.detalhesArtigo.nivelFormalidade, 1);
+          addLine("Requisitos Adicionais do Artigo", data.detalhesArtigo.requisitosAdicionais, 1);
+        }
+
+        if (data.publicoAlvo) {
+            promptLines.push("\nV. Público Alvo:");
+            addRawLine(data.publicoAlvo, 1);
+        }
+        if (data.metodologiaEnsino) {
+            promptLines.push("\nVI. Metodologia de Ensino/Abordagem Preferida:");
+            addRawLine(data.metodologiaEnsino, 1);
+        }
+
+        promptLines.push("\nVII. Detalhes Adicionais Gerais / Requisitos Específicos do Prompt Final:");
+        addRawLine(data.detalhesAdicionais, 1);
+        addLine("Linguagem de Saída do Conteúdo Gerado", data.linguagemSaida, 1);
+        addLine("Tom de Voz Desejado no Conteúdo Gerado", data.tomVoz, 1);
+        addLine("Formato de Saída Desejado do Conteúdo Gerado", data.formatoSaida, 1);
+
+        return promptLines.join('\n').trim();
+    }
+
+    // --- EVENT HANDLERS ---
+    function showCopyMessage(message, isSuccess) {
+        copySuccessMsg.textContent = message;
+        copySuccessMsg.className = isSuccess ? 'mt-2 text-sm text-green-400' : 'mt-2 text-sm text-red-400';
+        setTimeout(() => { copySuccessMsg.textContent = ''; }, 2000);
+    }
+    
+    form.addEventListener('change', () => {
+        formData = collectFormData();
+        updateConditionalSections();
+    });
+
+    generateBtn.addEventListener('click', () => {
+        formData = collectFormData();
+        generatedPrompt = formatPrompt(formData);
+        generatedPromptArea.value = generatedPrompt;
+        generatedPromptContainer.classList.remove('hidden-section');
+        copySuccessMsg.textContent = '';
+    });
+
+    clearBtn.addEventListener('click', () => {
+        formData = getInitialFormData();
+        setFormValues(formData);
+        generatedPrompt = '';
+        generatedPromptArea.value = '';
+        generatedPromptContainer.classList.add('hidden-section');
+        copySuccessMsg.textContent = '';
+    });
+
+    copyBtn.addEventListener('click', () => {
+        if (!generatedPrompt) {
+            showCopyMessage('Nada para copiar!', false);
+            return;
+        }
+        navigator.clipboard.writeText(generatedPrompt).then(() => {
+            showCopyMessage('Prompt copiado com sucesso!', true);
+        }).catch(err => {
+            console.error('Erro ao copiar: ', err);
+            showCopyMessage('Falha ao copiar.', false);
+        });
+    });
+    
+    // --- INITIALIZATION ---
+    populateForm();
+    setFormValues(formData);
+
+});
+</script>
+</body>
+</html>
