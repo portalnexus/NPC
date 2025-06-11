@@ -241,10 +241,15 @@ document.addEventListener('DOMContentLoaded', () => {
         DESAFIO_SEMANAL: "Desafio Semanal (Enunciado)",
         ARTIGO: "Artigo Científico/Análise",
         OUTRO: "Outro",
+        PROJETO_MAKER: "Projeto Maker",
+        PROJETO_STEAM: "Projeto STEAM",
+        DINAMICA: "Dinâmica",
+        ATIVIDADE: "Atividade",
+        PROJETO_COLABORATIVO: "Projeto colaborativo",
     };
 
     const DISCIPLINAS_OPTIONS = [
-        { value: "Matemática", label: "Matemática" }, { value: "Língua Portuguesa", label: "Língua Portuguesa" }, { value: "Programação e Robótica", label: "Programação e Robótica" }, { value: "Geografia", label: "Geografia" }, { value: "História", label: "História" }, { value: "Língua Inglesa", label: "Língua Inglesa" }, { value: "Educação Física", label: "Educação Física" }, { value: "Física", label: "Física" }, { value: "Química", label: "Química" }, { value: "Biologia", label: "Biologia" }, { value: "Filosofia", label: "Filosofia" }, { value: "Sociologia", label: "Sociologia" },
+    { value: "Matemática", label: "Matemática" }, { value: "Língua Portuguesa", label: "Língua Portuguesa" }, { value: "Programação e Robótica", label: "Programação e Robótica" }, { value: "Geografia", label: "Geografia" }, { value: "História", label: "História" }, { value: "Língua Inglesa", label: "Língua Inglesa" }, { value: "Educação Física", label: "Educação Física" }, { value: "Física", label: "Física" }, { value: "Química", label: "Química" }, { value: "Biologia", label: "Biologia" }, { value: "Filosofia", label: "Filosofia" }, { value: "Sociologia", label: "Sociologia" }, { value: "Libras", label: "Libras" }, { value: "STEAM", label: "STEAM" },
     ];
 
     const TIPO_RECURSO_OPTIONS = Object.values(ResourceType).map(value => ({ value, label: value }));
@@ -260,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const NIVEL_FORMALIDADE_ARTIGO_OPTIONS = [ { value: "Acadêmico (rigoroso)", label: "Acadêmico (rigoroso)" }, { value: "Divulgação Científica (acessível)", label: "Divulgação Científica (acessível)" }];
     const LINGUAGEM_SAIDA_OPTIONS = [ { value: "Português do Brasil", label: "Português do Brasil" }, { value: "Inglês", label: "Inglês" }];
     const TOM_VOZ_OPTIONS = [ { value: "Informativo", label: "Informativo" }, { value: "Engajador", label: "Engajador" }, { value: "Formal", label: "Formal" }, { value: "Divertido", label: "Divertido" }, { value: "Desafiador", label: "Desafiador" }, { value: "Didático", label: "Didático" }, { value: "Sóbrio", label: "Sóbrio" }, { value: "Inspirador", label: "Inspirador" }];
-    const FORMATO_SAIDA_OPTIONS = [ { value: "Texto Simples", label: "Texto Simples" }, { value: "Markdown", label: "Markdown" }, { value: "HTML (básico)", label: "HTML (básico)" }, { value: "JSON Estruturado", label: "JSON Estruturado" }];
+    const FORMATO_SAIDA_OPTIONS = [ { value: "Texto Simples", label: "Texto Simples" }, { value: "Markdown", label: "Markdown" }, { value: "HTML (básico)", label: "HTML (básico)" }, { value: "JSON Estruturado", label: "JSON Estruturado" }, { value: "Documento de texto formatado", label: "Documento de texto formatado" }, { value: "Apresentação de slides", label: "Apresentação de slides" }, { value: "Roteiro", label: "Roteiro" }];
 
     const getInitialFormData = () => ({
         objetivoPrincipal: "", disciplina: DISCIPLINAS_OPTIONS[0].value, topicoEspecifico: "", tipoRecurso: ResourceType.DESAFIO, tipoRecursoOutroEspecificar: "",
