@@ -195,6 +195,22 @@
                     </div>
                 </div>
 
+                <div id="section-estudo-caso" class="hidden-section">
+                    <h3 class="text-xl font-pixel text-green-300 mt-8 mb-4">IV.G. Detalhes para "Estudo de Caso"</h3>
+                    <div class="mb-6">
+                        <label for="estudoCasoSituacao" class="block text-sm font-medium text-slate-300 mb-2">Situação/Contexto do Estudo de Caso:</label>
+                        <textarea id="estudoCasoSituacao" name="estudoCasoSituacao" rows="4" placeholder="Descreva a situação ou o contexto do estudo de caso." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label for="estudoCasoQuestoes" class="block text-sm font-medium text-slate-300 mb-2">Questões para Análise/Discussão:</label>
+                        <textarea id="estudoCasoQuestoes" name="estudoCasoQuestoes" rows="4" placeholder="Liste as questões que os alunos devem analisar ou discutir." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label for="estudoCasoPontosChave" class="block text-sm font-medium text-slate-300 mb-2">Pontos Chave para Investigação (opcional):</label>
+                        <textarea id="estudoCasoPontosChave" name="estudoCasoPontosChave" rows="3" placeholder="Indique os pontos chave que devem ser investigados ou considerados." class="w-full p-3 bg-slate-800 border border-slate-700 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors text-slate-100 placeholder-slate-400 shadow-sm"></textarea>
+                    </div>
+                </div>
+
                 <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">V. Público Alvo (Opcional)</h2>
 
                 <h2 class="text-2xl font-pixel text-green-400 mb-6 mt-10 border-b border-slate-700 pb-3">V. Público Alvo (Opcional)</h2>
@@ -268,6 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         PROJETO_COLABORATIVO: "Projeto colaborativo",
         PROJETO_MAKER: "Projeto Maker",
         PROJETO_STEAM: "Projeto STEAM",
+        ESTUDO_CASO: "Estudo de Caso",
         OUTRO: "Outro",
     };
 
