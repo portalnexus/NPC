@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // IV.C. Conteúdo para Mídias
     const TIPO_MIDIA_OPTIONS = [ { value: "Imagem", label: "Imagem" }, { value: "Vídeo", label: "Vídeo" }, { value: "Áudio", label: "Áudio" }, { value: "Infográfico", label: "Infográfico" }];
     const FOCO_TEXTO_MIDIA_OPTIONS = [ { value: "Descritivo", label: "Descritivo" }, { value: "Reflexivo", label: "Reflexivo" }, { value: "Análise técnica", label: "Análise técnica" }, { value: "Contexto histórico", label: "Contexto histórico" }];
-    const FOCO_TEXTO_MIDIA_OPTIONS = [ { value: "Descritivo", label: "Descritivo" }, { value: "Reflexivo", label: "Reflexivo" }, { value: "Análise técnica", label: "Análise técnica" }, { value: "Contexto histórico", label: "Contexto histórico" }];
 
     // IV.D. Desafio Semanal
     const NATUREZA_DESAFIO_SEMANAL_OPTIONS = [ { value: "Enigma", label: "Enigma" }, { value: "Problema aberto", label: "Problema aberto" }, { value: "Questão interdisciplinar", label: "Questão interdisciplinar" }, { value: "Provocação filosófica", label: "Provocação filosófica" }];
