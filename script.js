@@ -1,59 +1,26 @@
+import {
+    ResourceType,
+    DISCIPLINAS_OPTIONS,
+    TIPO_RECURSO_OPTIONS,
+    NIVEL_DESAFIO_OPTIONS,
+    FORMATO_PROBLEMA_OPTIONS,
+    PROFUNDIDADE_EXPOSITIVO_OPTIONS,
+    ESTILO_ESCRITA_EXPOSITIVO_OPTIONS,
+    ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS,
+    TIPO_MIDIA_OPTIONS,
+    FOCO_TEXTO_MIDIA_OPTIONS,
+    NATUREZA_DESAFIO_SEMANAL_OPTIONS,
+    ESTRUTURA_ARTIGO_OPTIONS,
+    NIVEL_FORMALIDADE_ARTIGO_OPTIONS,
+    FORMATO_RESPOSTA_PROBLEMA_OPTIONS,
+    NIVEL_DIFICULDADE_PROBLEMA_OPTIONS,
+    STEAM_COMPONENTS_OPTIONS,
+    LINGUAGEM_SAIDA_OPTIONS,
+    TOM_VOZ_OPTIONS,
+    FORMATO_SAIDA_OPTIONS
+} from './constants.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-
-    const ResourceType = {
-        ARTIGO: "Artigo Científico/Análise",
-        ATIVIDADE: "Atividade",
-        MIDIAS: "Conteúdo para Mídias",
-        DESAFIO: "Desafio",
-        DESAFIO_SEMANAL: "Desafio Semanal (Enunciado)",
-        DINAMICA: "Dinâmica",
-        EXPOSITIVO: "Material Expositivo/Explicação",
-        PROB: "Problema",
-        PROJETO_COLABORATIVO: "Projeto colaborativo",
-        PROJETO_MAKER: "Projeto Maker",
-        PROJETO_STEAM: "Projeto STEAM",
-        ESTUDO_CASO: "Estudo de Caso",
-        OUTRO: "Outro",
-    };
-
-    const DISCIPLINAS_OPTIONS = [
-        { value: "Matemática", label: "Matemática" }, { value: "Língua Portuguesa", label: "Língua Portuguesa" }, { value: "Programação e Robótica", label: "Programação e Robótica" }, { value: "Geografia", label: "Geografia" }, { value: "História", label: "História" }, { value: "Língua Inglesa", label: "Língua Inglesa" }, { value: "Educação Física", label: "Educação Física" }, { value: "Física", label: "Física" }, { value: "Química", label: "Química" }, { value: "Biologia", label: "Biologia" }, { value: "Filosofia", label: "Filosofia" }, { value: "Sociologia", label: "Sociologia" }, { value: "Libras", label: "Libras" }, { value: "STEAM", label: "STEAM" },
-    ];
-
-    const TIPO_RECURSO_OPTIONS = Object.values(ResourceType).map(value => ({ value, label: value }));
-
-    // IV.A. Desafio
-    const NIVEL_DESAFIO_OPTIONS = [ { value: "Fácil", label: "Fácil" }, { value: "Intermediário", label: "Intermediário" }, { value: "Difícil", label: "Difícil" }, { value: "Hardcore", label: "Hardcore" }];
-    const FORMATO_PROBLEMA_OPTIONS = [ { value: "Múltipla escolha", label: "Múltipla escolha" }, { value: "Resposta curta", label: "Resposta curta" }, { value: "Desenvolvimento passo a passo", label: "Desenvolvimento passo a passo" }, { value: "Problema de lógica", label: "Problema de lógica" }, { value: "Estudo de caso", label: "Estudo de caso" }, { value: "Projeto prático", label: "Projeto prático" }];
-
-    // IV.B. Material Expositivo/Explicação
-    const PROFUNDIDADE_EXPOSITIVO_OPTIONS = [ { value: "Introdução ao tópico", label: "Introdução ao tópico" }, { value: "Explicação detalhada", label: "Explicação detalhada" }, { value: "Resumo para revisão", label: "Resumo para revisão" }];
-    const ESTILO_ESCRITA_EXPOSITIVO_OPTIONS = [ { value: "Didático", label: "Didático" }, { value: "Formal", label: "Formal" }, { value: "Informal", label: "Informal" }, { value: "Com analogias", label: "Com analogias" }];
-    const ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS = [ { value: "Exemplos práticos", label: "Exemplos práticos" }, { value: "Divisão em seções com subtítulos", label: "Divisão em seções com subtítulos" }, { value: "Glossário de termos chave", label: "Glossário de termos chave" }, { value: "Sugestão de leituras/recursos adicionais", label: "Sugestão de leituras/recursos adicionais" }];
-
-    // IV.C. Conteúdo para Mídias
-    const TIPO_MIDIA_OPTIONS = [ { value: "Imagem", label: "Imagem" }, { value: "Vídeo", label: "Vídeo" }, { value: "Áudio", label: "Áudio" }, { value: "Infográfico", label: "Infográfico" }];
-    const FOCO_TEXTO_MIDIA_OPTIONS = [ { value: "Descritivo", label: "Descritivo" }, { value: "Reflexivo", label: "Reflexivo" }, { value: "Análise técnica", label: "Análise técnica" }, { value: "Contexto histórico", label: "Contexto histórico" }];
-
-    // IV.D. Desafio Semanal
-    const NATUREZA_DESAFIO_SEMANAL_OPTIONS = [ { value: "Enigma", label: "Enigma" }, { value: "Problema aberto", label: "Problema aberto" }, { value: "Questão interdisciplinar", label: "Questão interdisciplinar" }, { value: "Provocação filosófica", label: "Provocação filosófica" }];
-
-    // IV.E. Artigo Científico/Análise
-    const ESTRUTURA_ARTIGO_OPTIONS = [ { value: "Introdução", label: "Introdução" }, { value: "Metodologia (se aplicável)", label: "Metodologia (se aplicável)" }, { value: "Resultados (se aplicável)", label: "Resultados (se aplicável)" }, { value: "Discussão", label: "Discussão" }, { value: "Conclusão", label: "Conclusão" }, { value: "Referências", label: "Referências" }];
-    const NIVEL_FORMALIDADE_ARTIGO_OPTIONS = [ { value: "Acadêmico (rigoroso)", label: "Acadêmico (rigoroso)" }, { value: "Divulgação Científica (acessível)", label: "Divulgação Científica (acessível)" }];
-
-    // IV.F. Problema
-    const FORMATO_RESPOSTA_PROBLEMA_OPTIONS = [ { value: "Numérico", label: "Numérico" }, { value: "Texto curto", label: "Texto curto" }, { value: "Múltipla Escolha (com justificativa)", label: "Múltipla Escolha (com justificativa)" }, { value: "Desenvolvimento completo", label: "Desenvolvimento completo" } ];
-    const NIVEL_DIFICULDADE_PROBLEMA_OPTIONS = [ { value: "Básico", label: "Básico" }, { value: "Intermediário", label: "Intermediário" }, { value: "Avançado", label: "Avançado" } ];
-
-    // IV.H. Projeto STEAM
-    const STEAM_COMPONENTS_OPTIONS = [ { value: "Ciência", label: "Ciência" }, { value: "Tecnologia", label: "Tecnologia" }, { value: "Engenharia", label: "Engenharia" }, { value: "Artes", label: "Artes" }, { value: "Matemática", label: "Matemática" }];
-
-    // VII. Detalhes Adicionais
-    const LINGUAGEM_SAIDA_OPTIONS = [ { value: "Português do Brasil", label: "Português do Brasil" }, { value: "Inglês", label: "Inglês" }];
-    const TOM_VOZ_OPTIONS = [ { value: "Informativo", label: "Informativo" }, { value: "Engajador", label: "Engajador" }, { value: "Formal", label: "Formal" }, { value: "Divertido", label: "Divertido" }, { value: "Desafiador", label: "Desafiador" }, { value: "Didático", label: "Didático" }, { value: "Sóbrio", label: "Sóbrio" }, { value: "Inspirador", label: "Inspirador" }];
-    const FORMATO_SAIDA_OPTIONS = [ { value: "Texto Simples", label: "Texto Simples" }, { value: "Markdown", label: "Markdown" }, { value: "HTML (básico)", label: "HTML (básico)" }, { value: "JSON Estruturado", label: "JSON Estruturado" }, { value: "Documento de texto formatado", label: "Documento de texto formatado" }, { value: "Apresentação de slides", label: "Apresentação de slides" }, { value: "Roteiro", label: "Roteiro" }];
-
     const getInitialFormData = () => ({
         objetivoPrincipal: "",
         disciplina: DISCIPLINAS_OPTIONS[0].value,
@@ -477,21 +444,125 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- EVENT HANDLERS ---
     function showCopyMessage(message, isSuccess) {
         copySuccessMsg.textContent = message;
-        copySuccessMsg.className = isSuccess ? 'success-message' : 'error-message';
-        setTimeout(() => { copySuccessMsg.textContent = ''; }, 2000);
+        copySuccessMsg.className = isSuccess ? 'success-message' : 'error-message'; // Certifique-se de ter classes CSS para isso
+        setTimeout(() => { copySuccessMsg.textContent = ''; }, 3000);
+    }
+
+    function displayError(elementId, message) {
+        const element = document.getElementById(elementId);
+        let errorElement = document.getElementById(`error-${elementId}`);
+        if (!errorElement) {
+            errorElement = document.createElement('p');
+            errorElement.id = `error-${elementId}`;
+            errorElement.className = 'error-message'; // Certifique-se de ter classes CSS para isso
+            element.parentNode.insertBefore(errorElement, element.nextSibling);
+        }
+        errorElement.textContent = message;
+        element.classList.add('input-error'); // Certifique-se de ter classes CSS para isso
+    }
+
+    function clearError(elementId) {
+        const element = document.getElementById(elementId);
+        const errorElement = document.getElementById(`error-${elementId}`);
+        if (errorElement) {
+            errorElement.textContent = '';
+        }
+        element.classList.remove('input-error');
+    }
+
+    function validateForm() {
+        let isValid = true;
+        formData = collectFormData(); // Atualiza formData com os valores atuais
+
+        // Limpar erros anteriores
+        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+        document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+
+        if (!formData.objetivoPrincipal.trim()) {
+            displayError('objetivoPrincipal', 'O objetivo principal é obrigatório.');
+            isValid = false;
+        }
+        if (!formData.topicoEspecifico.trim()) {
+            displayError('topicoEspecifico', 'O tópico específico é obrigatório.');
+            isValid = false;
+        }
+
+        if (formData.tipoRecurso === ResourceType.OUTRO && !formData.tipoRecursoOutroEspecificar.trim()) {
+            displayError('tipoRecursoOutroEspecificar', 'Por favor, especifique o tipo de recurso.');
+            isValid = false;
+        }
+
+        // Validações específicas para seções condicionais, se estiverem visíveis
+        if (formData.tipoRecurso === ResourceType.DESAFIO) {
+            if (formData.detalhesDesafio.incluirDica && !formData.detalhesDesafio.dicaConteudo.trim()) {
+                displayError('dicaConteudo', 'O conteúdo da dica é obrigatório.');
+                isValid = false;
+            }
+            if (formData.detalhesDesafio.fornecerSolucao && !formData.detalhesDesafio.solucaoConteudo.trim()) {
+                displayError('solucaoConteudo', 'O conteúdo da solução é obrigatório.');
+                isValid = false;
+            }
+        }
+
+        if (formData.tipoRecurso === ResourceType.PROB && !formData.detalhesProblema.descricao.trim()) {
+            displayError('descricaoProblema', 'A descrição do problema é obrigatória.');
+            isValid = false;
+        }
+
+        if (formData.tipoRecurso === ResourceType.ESTUDO_CASO) {
+            if (!formData.detalhesEstudoCaso.situacao.trim()) {
+                displayError('estudoCasoSituacao', 'A situação do estudo de caso é obrigatória.');
+                isValid = false;
+            }
+            if (!formData.detalhesEstudoCaso.questoes.trim()) {
+                displayError('estudoCasoQuestoes', 'As questões para análise são obrigatórias.');
+                isValid = false;
+            }
+        }
+
+        if (formData.tipoRecurso === ResourceType.PROJETO_STEAM) {
+            if (!formData.detalhesSteam.conceitoCentral.trim()) {
+                displayError('steamConceitoCentral', 'O conceito central do projeto STEAM é obrigatório.');
+                isValid = false;
+            }
+            if (formData.detalhesSteam.componentes.length === 0) {
+                // Para grupos de checkboxes, o erro pode ser exibido próximo ao label do grupo
+                displayError('steam-componentes-options', 'Selecione pelo menos um componente STEAM.');
+                isValid = false;
+            }
+             if (!formData.detalhesSteam.objetivos.trim()) {
+                displayError('steamObjetivos', 'Os objetivos de aprendizagem são obrigatórios.');
+                isValid = false;
+            }
+        }
+
+
+        return isValid;
     }
     
-    form.addEventListener('change', () => {
+    form.addEventListener('change', (event) => {
         formData = collectFormData();
         updateConditionalSections();
+        // Limpa o erro específico do campo que mudou, se houver
+        if (event.target && event.target.id) {
+            clearError(event.target.id);
+        }
     });
 
     generateBtn.addEventListener('click', () => {
-        formData = collectFormData();
-        generatedPrompt = formatPrompt(formData);
-        generatedPromptArea.value = generatedPrompt;
-        generatedPromptContainer.classList.remove('hidden-section');
-        copySuccessMsg.textContent = '';
+        if (validateForm()) {
+            generatedPrompt = formatPrompt(formData);
+            generatedPromptArea.value = generatedPrompt;
+            generatedPromptContainer.classList.remove('hidden-section');
+            copySuccessMsg.textContent = '';
+        } else {
+            showCopyMessage('Por favor, corrija os erros no formulário.', false);
+            // Opcional: Focar no primeiro campo com erro
+            const firstError = form.querySelector('.input-error');
+            if (firstError) {
+                firstError.focus();
+            }
+        }
     });
 
     clearBtn.addEventListener('click', () => {
