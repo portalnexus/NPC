@@ -157,6 +157,23 @@ button {
     background-color: #2563eb;
 }
 
+.error-message {
+    color: #f87171; /* Tailwind red-400 */
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.input-error {
+    border-color: #f87171 !important; /* Tailwind red-400 */
+}
+
+.success-message {
+    color: #34d399; /* Tailwind green-400 */
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+
 footer {
     width: 100%;
     max-width: 896px;
