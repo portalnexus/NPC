@@ -21,20 +21,39 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const TIPO_RECURSO_OPTIONS = Object.values(ResourceType).map(value => ({ value, label: value }));
+
+    // IV.A. Desafio
     const NIVEL_DESAFIO_OPTIONS = [ { value: "Fácil", label: "Fácil" }, { value: "Intermediário", label: "Intermediário" }, { value: "Difícil", label: "Difícil" }, { value: "Hardcore", label: "Hardcore" }];
     const FORMATO_PROBLEMA_OPTIONS = [ { value: "Múltipla escolha", label: "Múltipla escolha" }, { value: "Resposta curta", label: "Resposta curta" }, { value: "Desenvolvimento passo a passo", label: "Desenvolvimento passo a passo" }, { value: "Problema de lógica", label: "Problema de lógica" }, { value: "Estudo de caso", label: "Estudo de caso" }, { value: "Projeto prático", label: "Projeto prático" }];
+
+    // IV.B. Material Expositivo/Explicação
     const PROFUNDIDADE_EXPOSITIVO_OPTIONS = [ { value: "Introdução ao tópico", label: "Introdução ao tópico" }, { value: "Explicação detalhada", label: "Explicação detalhada" }, { value: "Resumo para revisão", label: "Resumo para revisão" }];
     const ESTILO_ESCRITA_EXPOSITIVO_OPTIONS = [ { value: "Didático", label: "Didático" }, { value: "Formal", label: "Formal" }, { value: "Informal", label: "Informal" }, { value: "Com analogias", label: "Com analogias" }];
     const ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS = [ { value: "Exemplos práticos", label: "Exemplos práticos" }, { value: "Divisão em seções com subtítulos", label: "Divisão em seções com subtítulos" }, { value: "Glossário de termos chave", label: "Glossário de termos chave" }, { value: "Sugestão de leituras/recursos adicionais", label: "Sugestão de leituras/recursos adicionais" }];
+
+    // IV.C. Conteúdo para Mídias
     const TIPO_MIDIA_OPTIONS = [ { value: "Imagem", label: "Imagem" }, { value: "Vídeo", label: "Vídeo" }, { value: "Áudio", label: "Áudio" }, { value: "Infográfico", label: "Infográfico" }];
     const FOCO_TEXTO_MIDIA_OPTIONS = [ { value: "Descritivo", label: "Descritivo" }, { value: "Reflexivo", label: "Reflexivo" }, { value: "Análise técnica", label: "Análise técnica" }, { value: "Contexto histórico", label: "Contexto histórico" }];
+    const FOCO_TEXTO_MIDIA_OPTIONS = [ { value: "Descritivo", label: "Descritivo" }, { value: "Reflexivo", label: "Reflexivo" }, { value: "Análise técnica", label: "Análise técnica" }, { value: "Contexto histórico", label: "Contexto histórico" }];
+
+    // IV.D. Desafio Semanal
     const NATUREZA_DESAFIO_SEMANAL_OPTIONS = [ { value: "Enigma", label: "Enigma" }, { value: "Problema aberto", label: "Problema aberto" }, { value: "Questão interdisciplinar", label: "Questão interdisciplinar" }, { value: "Provocação filosófica", label: "Provocação filosófica" }];
+
+    // IV.E. Artigo Científico/Análise
     const ESTRUTURA_ARTIGO_OPTIONS = [ { value: "Introdução", label: "Introdução" }, { value: "Metodologia (se aplicável)", label: "Metodologia (se aplicável)" }, { value: "Resultados (se aplicável)", label: "Resultados (se aplicável)" }, { value: "Discussão", label: "Discussão" }, { value: "Conclusão", label: "Conclusão" }, { value: "Referências", label: "Referências" }];
     const NIVEL_FORMALIDADE_ARTIGO_OPTIONS = [ { value: "Acadêmico (rigoroso)", label: "Acadêmico (rigoroso)" }, { value: "Divulgação Científica (acessível)", label: "Divulgação Científica (acessível)" }];
+
+    // IV.F. Problema
+    const FORMATO_RESPOSTA_PROBLEMA_OPTIONS = [ { value: "Numérico", label: "Numérico" }, { value: "Texto curto", label: "Texto curto" }, { value: "Múltipla Escolha (com justificativa)", label: "Múltipla Escolha (com justificativa)" }, { value: "Desenvolvimento completo", label: "Desenvolvimento completo" } ];
+    const NIVEL_DIFICULDADE_PROBLEMA_OPTIONS = [ { value: "Básico", label: "Básico" }, { value: "Intermediário", label: "Intermediário" }, { value: "Avançado", label: "Avançado" } ];
+
+    // IV.H. Projeto STEAM
+    const STEAM_COMPONENTS_OPTIONS = [ { value: "Ciência", label: "Ciência" }, { value: "Tecnologia", label: "Tecnologia" }, { value: "Engenharia", label: "Engenharia" }, { value: "Artes", label: "Artes" }, { value: "Matemática", label: "Matemática" }];
+
+    // VII. Detalhes Adicionais
     const LINGUAGEM_SAIDA_OPTIONS = [ { value: "Português do Brasil", label: "Português do Brasil" }, { value: "Inglês", label: "Inglês" }];
     const TOM_VOZ_OPTIONS = [ { value: "Informativo", label: "Informativo" }, { value: "Engajador", label: "Engajador" }, { value: "Formal", label: "Formal" }, { value: "Divertido", label: "Divertido" }, { value: "Desafiador", label: "Desafiador" }, { value: "Didático", label: "Didático" }, { value: "Sóbrio", label: "Sóbrio" }, { value: "Inspirador", label: "Inspirador" }];
     const FORMATO_SAIDA_OPTIONS = [ { value: "Texto Simples", label: "Texto Simples" }, { value: "Markdown", label: "Markdown" }, { value: "HTML (básico)", label: "HTML (básico)" }, { value: "JSON Estruturado", label: "JSON Estruturado" }, { value: "Documento de texto formatado", label: "Documento de texto formatado" }, { value: "Apresentação de slides", label: "Apresentação de slides" }, { value: "Roteiro", label: "Roteiro" }];
-    const STEAM_COMPONENTS_OPTIONS = [ { value: "Ciência", label: "Ciência" }, { value: "Tecnologia", label: "Tecnologia" }, { value: "Engenharia", label: "Engenharia" }, { value: "Artes", label: "Artes" }, { value: "Matemática", label: "Matemática" }];
 
     const getInitialFormData = () => ({
         objetivoPrincipal: "",
@@ -47,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         detalhesMidias: { tipoMidia: TIPO_MIDIA_OPTIONS[0].value, focoTexto: FOCO_TEXTO_MIDIA_OPTIONS[0].value, comprimentoAproximado: "", requisitosAdicionais: "" },
         detalhesDesafioSemanal: { naturezaDesafio: NATUREZA_DESAFIO_SEMANAL_OPTIONS[0].value, tituloSugerido: "", instrucaoPrincipal: "" },
         detalhesArtigo: { estruturaTipica: ESTRUTURA_ARTIGO_OPTIONS.map(opt => opt.value), nivelFormalidade: NIVEL_FORMALIDADE_ARTIGO_OPTIONS[0].value, requisitosAdicionais: "" },
-        detalhesProblema: { descricao: "", formatoResposta: "", nivelDificuldade: "", requisitosAdicionais: "" },
+        detalhesProblema: { descricao: "", formatoResposta: FORMATO_RESPOSTA_PROBLEMA_OPTIONS[0].value, nivelDificuldade: NIVEL_DIFICULDADE_PROBLEMA_OPTIONS[0].value, requisitosAdicionais: "" },
         detalhesEstudoCaso: { situacao: "", questoes: "", pontosChave: "" },
         detalhesSteam: { conceitoCentral: "", componentes: [], objetivos: "", materiais: "", etapas: "", entregaFinal: "" },
         publicoAlvo: "",
@@ -126,20 +145,38 @@ document.addEventListener('DOMContentLoaded', () => {
     function populateForm() {
         populateSelect('disciplina', DISCIPLINAS_OPTIONS);
         populateSelect('tipoRecurso', TIPO_RECURSO_OPTIONS);
-        populateRadioGroup('nivel-desafio-options', NIVEL_DESAFIO_OPTIONS, 'nivelDesafio');
+
+        // IV.A. Desafio
+        populateSelect('nivelDesafio', NIVEL_DESAFIO_OPTIONS); // Alterado de RadioGroup para Select
         populateCheckboxGroup('formato-problema-options', FORMATO_PROBLEMA_OPTIONS, 'formatoProblema');
-        populateRadioGroup('profundidade-expositivo-options', PROFUNDIDADE_EXPOSITIVO_OPTIONS, 'profundidadeExpositivo');
+
+        // IV.B. Material Expositivo/Explicação
+        populateSelect('profundidadeExpositivo', PROFUNDIDADE_EXPOSITIVO_OPTIONS); // Alterado de RadioGroup para Select
         populateSelect('estiloEscritaExpositivo', ESTILO_ESCRITA_EXPOSITIVO_OPTIONS);
         populateCheckboxGroup('elementos-incluir-options', ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS, 'elementosIncluir');
+
+        // IV.C. Conteúdo para Mídias
         populateSelect('tipoMidia', TIPO_MIDIA_OPTIONS);
         populateSelect('focoTextoMidia', FOCO_TEXTO_MIDIA_OPTIONS);
+
+        // IV.D. Desafio Semanal
         populateSelect('naturezaDesafioSemanal', NATUREZA_DESAFIO_SEMANAL_OPTIONS);
+
+        // IV.E. Artigo Científico/Análise
         populateCheckboxGroup('estrutura-artigo-options', ESTRUTURA_ARTIGO_OPTIONS, 'estruturaTipica');
         populateSelect('nivelFormalidadeArtigo', NIVEL_FORMALIDADE_ARTIGO_OPTIONS);
+
+        // IV.F. Problema
+        populateSelect('formatoRespostaProblema', FORMATO_RESPOSTA_PROBLEMA_OPTIONS);
+        populateSelect('nivelDificuldadeProblema', NIVEL_DIFICULDADE_PROBLEMA_OPTIONS);
+
+        // IV.H. Projeto STEAM
+        populateCheckboxGroup('steam-componentes-options', STEAM_COMPONENTS_OPTIONS, 'steamComponentes');
+
+        // VII. Detalhes Adicionais
         populateSelect('linguagemSaida', LINGUAGEM_SAIDA_OPTIONS);
         populateSelect('tomVoz', TOM_VOZ_OPTIONS);
         populateSelect('formatoSaida', FORMATO_SAIDA_OPTIONS);
-        populateCheckboxGroup('steam-componentes-options', STEAM_COMPONENTS_OPTIONS, 'steamComponentes');
     }
     
     // --- UI UPDATE FUNCTIONS ---
@@ -151,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tipoRecursoOutroEspecificar').value = data.tipoRecursoOutroEspecificar;
 
         // Desafio
-        document.querySelectorAll('input[name="nivelDesafio"]').forEach(el => el.checked = el.value === data.detalhesDesafio.nivel);
+        document.getElementById('nivelDesafio').value = data.detalhesDesafio.nivel; // Alterado para .value
         document.querySelectorAll('input[name="formatoProblema"]').forEach(el => el.checked = data.detalhesDesafio.formatoProblema.includes(el.value));
         document.getElementById('incluirDica').checked = data.detalhesDesafio.incluirDica;
         document.getElementById('dicaConteudo').value = data.detalhesDesafio.dicaConteudo;
@@ -160,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('requisitosAdicionaisDesafio').value = data.detalhesDesafio.requisitosAdicionais;
         
         // Expositivo
-        document.querySelectorAll('input[name="profundidadeExpositivo"]').forEach(el => el.checked = el.value === data.detalhesExpositivo.profundidade);
+        document.getElementById('profundidadeExpositivo').value = data.detalhesExpositivo.profundidade; // Alterado para .value
         document.getElementById('estiloEscritaExpositivo').value = data.detalhesExpositivo.estiloEscrita;
         document.querySelectorAll('input[name="elementosIncluir"]').forEach(el => el.checked = data.detalhesExpositivo.elementosIncluir.includes(el.value));
         document.getElementById('requisitosAdicionaisExpositivo').value = data.detalhesExpositivo.requisitosAdicionais;
@@ -267,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Nested details
         // Desafio
-        data.detalhesDesafio.nivel = document.querySelector('input[name="nivelDesafio"]:checked')?.value || data.detalhesDesafio.nivel;
+        data.detalhesDesafio.nivel = document.getElementById('nivelDesafio').value; // Alterado para .value
         data.detalhesDesafio.formatoProblema = Array.from(document.querySelectorAll('input[name="formatoProblema"]:checked')).map(el => el.value);
         data.detalhesDesafio.incluirDica = document.getElementById('incluirDica').checked;
         data.detalhesDesafio.dicaConteudo = document.getElementById('dicaConteudo').value;
@@ -276,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.detalhesDesafio.requisitosAdicionais = document.getElementById('requisitosAdicionaisDesafio').value;
         
         // Expositivo
-        data.detalhesExpositivo.profundidade = document.querySelector('input[name="profundidadeExpositivo"]:checked')?.value || data.detalhesExpositivo.profundidade;
+        data.detalhesExpositivo.profundidade = document.getElementById('profundidadeExpositivo').value; // Alterado para .value
         data.detalhesExpositivo.estiloEscrita = document.getElementById('estiloEscritaExpositivo').value;
         data.detalhesExpositivo.elementosIncluir = Array.from(document.querySelectorAll('input[name="elementosIncluir"]:checked')).map(el => el.value);
         data.detalhesExpositivo.requisitosAdicionais = document.getElementById('requisitosAdicionaisExpositivo').value;

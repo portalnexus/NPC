@@ -54,12 +54,12 @@
 
                 <div id="section-desafio" class="hidden-section">
                     <h3>IV.A. Detalhes para "Desafio"</h3>
-                    <fieldset class="form-group">
-                        <legend>Nível:</legend>
-                        <div id="nivel-desafio-options"></div>
-                    </fieldset>
                     <div class="form-group">
-                        <p>Formato do Problema:</p>
+                        <label for="nivelDesafio">Nível:</label>
+                        <select id="nivelDesafio" name="nivelDesafio"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formato-problema-options">Formato do Problema:</label>
                         <div id="formato-problema-options"></div>
                     </div>
                     <div class="form-group">
@@ -86,16 +86,16 @@
                 
                 <div id="section-expositivo" class="hidden-section">
                      <h3>IV.B. Detalhes para "Material Expositivo/Explicação"</h3>
-                     <fieldset class="form-group">
-                        <legend>Profundidade:</legend>
-                        <div id="profundidade-expositivo-options"></div>
-                    </fieldset>
+                     <div class="form-group">
+                        <label for="profundidadeExpositivo">Profundidade:</label>
+                        <select id="profundidadeExpositivo" name="profundidadeExpositivo"></select>
+                    </div>
                     <div class="form-group">
                         <label for="estiloEscritaExpositivo">Estilo de Escrita:</label>
                         <select id="estiloEscritaExpositivo" name="estiloEscrita"></select>
                     </div>
                     <div class="form-group">
-                        <p>Elementos a Incluir:</p>
+                        <label for="elementos-incluir-options">Elementos a Incluir:</label>
                         <div id="elementos-incluir-options"></div>
                     </div>
                     <div class="form-group">
@@ -143,7 +143,7 @@
                 <div id="section-artigo" class="hidden-section">
                     <h3>IV.E. Detalhes para "Artigo Científico/Análise"</h3>
                      <div class="form-group">
-                        <p>Estrutura Típica (pré-selecionado):</p>
+                        <label for="estrutura-artigo-options">Estrutura Típica (pré-selecionado):</label>
                         <div id="estrutura-artigo-options"></div>
                     </div>
                     <div class="form-group">
@@ -164,11 +164,15 @@
                     </div>
                     <div class="form-group">
                         <label for="formatoRespostaProblema">Formato da Resposta Esperada:</label>
-                        <select id="formatoRespostaProblema" name="formatoRespostaProblema"></select>
+                        <select id="formatoRespostaProblema" name="formatoRespostaProblema">
+                            <!-- Opções serão populadas pelo JS -->
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="nivelDificuldadeProblema">Nível de Dificuldade:</label>
-                        <select id="nivelDificuldadeProblema" name="nivelDificuldadeProblema"></select>
+                        <select id="nivelDificuldadeProblema" name="nivelDificuldadeProblema">
+                            <!-- Opções serão populadas pelo JS -->
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="requisitosAdicionaisProblema">Requisitos Adicionais do Problema:</label>
@@ -199,7 +203,7 @@
                         <textarea id="steamConceitoCentral" name="steamConceitoCentral" rows="3" placeholder="Descreva a ideia ou problema central que o projeto abordará."></textarea>
                     </div>
                     <div class="form-group">
-                        <p>Componentes STEAM Envolvidos:</p>
+                        <label for="steam-componentes-options">Componentes STEAM Envolvidos:</label>
                         <div id="steam-componentes-options"></div>
                     </div>
                     <div class="form-group">
