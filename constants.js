@@ -32,3 +32,23 @@ export const NIVEL_FORMALIDADE_ARTIGO_OPTIONS = [ { value: "Acadêmico (rigoroso
 export const LINGUAGEM_SAIDA_OPTIONS = [ { value: "Português do Brasil", label: "Português do Brasil" }, { value: "Inglês", label: "Inglês" }];
 export const TOM_VOZ_OPTIONS = [ { value: "Informativo", label: "Informativo" }, { value: "Engajador", label: "Engajador" }, { value: "Formal", label: "Formal" }, { value: "Divertido", label: "Divertido" }, { value: "Desafiador", label: "Desafiador" }, { value: "Didático", label: "Didático" }, { value: "Sóbrio", label: "Sóbrio" }, { value: "Inspirador", label: "Inspirador" }];
 export const FORMATO_SAIDA_OPTIONS = [ { value: "Texto Simples", label: "Texto Simples" }, { value: "Markdown", label: "Markdown" }, { value: "HTML (básico)", label: "HTML (básico)" }, { value: "JSON Estruturado", label: "JSON Estruturado" }, { value: "Documento de texto formatado", label: "Documento de texto formatado" }, { value: "Apresentação de slides", label: "Apresentação de slides" }, { value: "Roteiro", label: "Roteiro" }];
+
+export const FORMATO_RESPOSTA_PROBLEMA_OPTIONS = [
+    { value: "Apenas a resposta final", label: "Apenas a resposta final" },
+    { value: "Passo a passo", label: "Passo a passo" },
+    { value: "Código", label: "Código" },
+];
+
+export const NIVEL_DIFICULDADE_PROBLEMA_OPTIONS = [
+    { value: "Fácil", label: "Fácil" },
+    { value: "Médio", label: "Médio" },
+    { value: "Difícil", label: "Difícil" },
+];
+
+export const STEAM_COMPONENTS_OPTIONS = [
+    { value: "Science", label: "Science (Ciências)" },
+    { value: "Technology", label: "Technology (Tecnologia)" },
+    { value: "Engineering", label: "Engineering (Engenharia)" },
+    { value: "Arts", label: "Arts (Artes)" },
+    { value: "Mathematics", label: "Mathematics (Matemática)" },
+];
