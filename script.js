@@ -17,7 +17,13 @@ import {
     STEAM_COMPONENTS_OPTIONS,
     LINGUAGEM_SAIDA_OPTIONS,
     TOM_VOZ_OPTIONS,
-    FORMATO_SAIDA_OPTIONS
+    FORMATO_SAIDA_OPTIONS,
+    TIPO_ATIVIDADE_OPTIONS,
+    NIVEL_DIFICULDADE_ATIVIDADE_OPTIONS,
+    OBJETIVO_DINAMICA_OPTIONS,
+    PARTICIPANTES_DINAMICA_OPTIONS,
+    TIPO_PROJETO_OPTIONS,
+    ENTREGA_PROJETO_OPTIONS
 } from './constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         detalhesProblema: { descricao: "", formatoResposta: FORMATO_RESPOSTA_PROBLEMA_OPTIONS[0].value, nivelDificuldade: NIVEL_DIFICULDADE_PROBLEMA_OPTIONS[0].value, requisitosAdicionais: "" },
         detalhesEstudoCaso: { situacao: "", questoes: "", pontosChave: "" },
         detalhesSteam: { conceitoCentral: "", componentes: [], objetivos: "", materiais: "", etapas: "", entregaFinal: "" },
+        detalhesAtividade: { tipo: TIPO_ATIVIDADE_OPTIONS[0].value, nivelDificuldade: NIVEL_DIFICULDADE_ATIVIDADE_OPTIONS[0].value, requisitosAdicionais: "" },
+        detalhesDinamica: { objetivo: OBJETIVO_DINAMICA_OPTIONS[0].value, participantes: PARTICIPANTES_DINAMICA_OPTIONS[0].value, materiais: "", instrucoes: "" },
+        detalhesProjeto: { tipo: TIPO_PROJETO_OPTIONS[0].value, objetivos: "", materiais: "", entregaFinal: ENTREGA_PROJETO_OPTIONS[0].value, requisitosAdicionais: "" },
         publicoAlvo: "",
         metodologiaEnsino: "",
         detalhesAdicionais: "",
@@ -60,10 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const select = document.getElementById(selectId);
         select.innerHTML = '';
         options.forEach(opt => {
-            const optionEl = document.createElement('option');
-            optionEl.value = opt.value;
-            optionEl.textContent = opt.label;
-            select.appendChild(optionEl);
+            if (opt.options) { // This is an optgroup
+                const optgroupEl = document.createElement('optgroup');
+                optgroupEl.label = opt.label;
+                opt.options.forEach(groupOpt => {
+                    const optionEl = document.createElement('option');
+                    optionEl.value = groupOpt.value;
+                    optionEl.textContent = groupOpt.label;
+                    optgroupEl.appendChild(optionEl);
+                });
+                select.appendChild(optgroupEl);
+            } else { // This is a regular option
+                const optionEl = document.createElement('option');
+                optionEl.value = opt.value;
+                optionEl.textContent = opt.label;
+                select.appendChild(optionEl);
+            }
         });
     }
 
@@ -113,11 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
         populateSelect('tipoRecurso', TIPO_RECURSO_OPTIONS);
 
         // IV.A. Desafio
-        populateSelect('nivelDesafio', NIVEL_DESAFIO_OPTIONS); // Alterado de RadioGroup para Select
+        populateSelect('nivelDesafio', NIVEL_DESAFIO_OPTIONS);
         populateCheckboxGroup('formato-problema-options', FORMATO_PROBLEMA_OPTIONS, 'formatoProblema');
 
         // IV.B. Material Expositivo/Explicação
-        populateSelect('profundidadeExpositivo', PROFUNDIDADE_EXPOSITIVO_OPTIONS); // Alterado de RadioGroup para Select
+        populateSelect('profundidadeExpositivo', PROFUNDIDADE_EXPOSITIVO_OPTIONS);
         populateSelect('estiloEscritaExpositivo', ESTILO_ESCRITA_EXPOSITIVO_OPTIONS);
         populateCheckboxGroup('elementos-incluir-options', ELEMENTOS_INCLUIR_EXPOSITIVO_OPTIONS, 'elementosIncluir');
 
@@ -139,6 +160,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // IV.H. Projeto STEAM
         populateCheckboxGroup('steam-componentes-options', STEAM_COMPONENTS_OPTIONS, 'steamComponentes');
 
+        // IV.I. Atividade
+        populateSelect('tipoAtividade', TIPO_ATIVIDADE_OPTIONS);
+        populateSelect('nivelDificuldadeAtividade', NIVEL_DIFICULDADE_ATIVIDADE_OPTIONS);
+
+        // IV.J. Dinâmica em Grupo
+        populateSelect('objetivoDinamica', OBJETIVO_DINAMICA_OPTIONS);
+        populateSelect('participantesDinamica', PARTICIPANTES_DINAMICA_OPTIONS);
+
+        // IV.K. Projeto
+        populateSelect('tipoProjeto', TIPO_PROJETO_OPTIONS);
+        populateSelect('entregaFinalProjeto', ENTREGA_PROJETO_OPTIONS);
+
         // VII. Detalhes Adicionais
         populateSelect('linguagemSaida', LINGUAGEM_SAIDA_OPTIONS);
         populateSelect('tomVoz', TOM_VOZ_OPTIONS);
@@ -154,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tipoRecursoOutroEspecificar').value = data.tipoRecursoOutroEspecificar;
 
         // Desafio
-        document.getElementById('nivelDesafio').value = data.detalhesDesafio.nivel; // Alterado para .value
+        document.getElementById('nivelDesafio').value = data.detalhesDesafio.nivel;
         document.querySelectorAll('input[name="formatoProblema"]').forEach(el => el.checked = data.detalhesDesafio.formatoProblema.includes(el.value));
         document.getElementById('incluirDica').checked = data.detalhesDesafio.incluirDica;
         document.getElementById('dicaConteudo').value = data.detalhesDesafio.dicaConteudo;
@@ -163,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('requisitosAdicionaisDesafio').value = data.detalhesDesafio.requisitosAdicionais;
         
         // Expositivo
-        document.getElementById('profundidadeExpositivo').value = data.detalhesExpositivo.profundidade; // Alterado para .value
+        document.getElementById('profundidadeExpositivo').value = data.detalhesExpositivo.profundidade;
         document.getElementById('estiloEscritaExpositivo').value = data.detalhesExpositivo.estiloEscrita;
         document.querySelectorAll('input[name="elementosIncluir"]').forEach(el => el.checked = data.detalhesExpositivo.elementosIncluir.includes(el.value));
         document.getElementById('requisitosAdicionaisExpositivo').value = data.detalhesExpositivo.requisitosAdicionais;
@@ -203,6 +236,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('steamEtapas').value = data.detalhesSteam.etapas;
         document.getElementById('steamEntregaFinal').value = data.detalhesSteam.entregaFinal;
 
+        // Atividade
+        document.getElementById('tipoAtividade').value = data.detalhesAtividade.tipo;
+        document.getElementById('nivelDificuldadeAtividade').value = data.detalhesAtividade.nivelDificuldade;
+        document.getElementById('requisitosAdicionaisAtividade').value = data.detalhesAtividade.requisitosAdicionais;
+
+        // Dinamica
+        document.getElementById('objetivoDinamica').value = data.detalhesDinamica.objetivo;
+        document.getElementById('participantesDinamica').value = data.detalhesDinamica.participantes;
+        document.getElementById('materiaisDinamica').value = data.detalhesDinamica.materiais;
+        document.getElementById('instrucoesDinamica').value = data.detalhesDinamica.instrucoes;
+
+        // Projeto
+        document.getElementById('tipoProjeto').value = data.detalhesProjeto.tipo;
+        document.getElementById('objetivosProjeto').value = data.detalhesProjeto.objetivos;
+        document.getElementById('materiaisProjeto').value = data.detalhesProjeto.materiais;
+        document.getElementById('entregaFinalProjeto').value = data.detalhesProjeto.entregaFinal;
+        document.getElementById('requisitosAdicionaisProjeto').value = data.detalhesProjeto.requisitosAdicionais;
+
         document.getElementById('publicoAlvo').value = data.publicoAlvo;
         document.getElementById('metodologiaEnsino').value = data.metodologiaEnsino;
         document.getElementById('detalhesAdicionais').value = data.detalhesAdicionais;
@@ -224,6 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
             [ResourceType.PROB]: 'section-problema',
             [ResourceType.ESTUDO_CASO]: 'section-estudo-caso',
             [ResourceType.PROJETO_STEAM]: 'section-steam',
+            [ResourceType.ATIVIDADE]: 'section-atividade',
+            [ResourceType.DINAMICA]: 'section-dinamica',
+            [ResourceType.PROJETO]: 'section-projeto',
             [ResourceType.OUTRO]: 'section-outro'
         };
 
@@ -270,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Nested details
         // Desafio
-        data.detalhesDesafio.nivel = document.getElementById('nivelDesafio').value; // Alterado para .value
+        data.detalhesDesafio.nivel = document.getElementById('nivelDesafio').value;
         data.detalhesDesafio.formatoProblema = Array.from(document.querySelectorAll('input[name="formatoProblema"]:checked')).map(el => el.value);
         data.detalhesDesafio.incluirDica = document.getElementById('incluirDica').checked;
         data.detalhesDesafio.dicaConteudo = document.getElementById('dicaConteudo').value;
@@ -279,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.detalhesDesafio.requisitosAdicionais = document.getElementById('requisitosAdicionaisDesafio').value;
         
         // Expositivo
-        data.detalhesExpositivo.profundidade = document.getElementById('profundidadeExpositivo').value; // Alterado para .value
+        data.detalhesExpositivo.profundidade = document.getElementById('profundidadeExpositivo').value;
         data.detalhesExpositivo.estiloEscrita = document.getElementById('estiloEscritaExpositivo').value;
         data.detalhesExpositivo.elementosIncluir = Array.from(document.querySelectorAll('input[name="elementosIncluir"]:checked')).map(el => el.value);
         data.detalhesExpositivo.requisitosAdicionais = document.getElementById('requisitosAdicionaisExpositivo').value;
@@ -318,6 +372,24 @@ document.addEventListener('DOMContentLoaded', () => {
         data.detalhesSteam.materiais = document.getElementById('steamMateriais').value;
         data.detalhesSteam.etapas = document.getElementById('steamEtapas').value;
         data.detalhesSteam.entregaFinal = document.getElementById('steamEntregaFinal').value;
+
+        // Atividade
+        data.detalhesAtividade.tipo = document.getElementById('tipoAtividade').value;
+        data.detalhesAtividade.nivelDificuldade = document.getElementById('nivelDificuldadeAtividade').value;
+        data.detalhesAtividade.requisitosAdicionais = document.getElementById('requisitosAdicionaisAtividade').value;
+
+        // Dinamica
+        data.detalhesDinamica.objetivo = document.getElementById('objetivoDinamica').value;
+        data.detalhesDinamica.participantes = document.getElementById('participantesDinamica').value;
+        data.detalhesDinamica.materiais = document.getElementById('materiaisDinamica').value;
+        data.detalhesDinamica.instrucoes = document.getElementById('instrucoesDinamica').value;
+
+        // Projeto
+        data.detalhesProjeto.tipo = document.getElementById('tipoProjeto').value;
+        data.detalhesProjeto.objetivos = document.getElementById('objetivosProjeto').value;
+        data.detalhesProjeto.materiais = document.getElementById('materiaisProjeto').value;
+        data.detalhesProjeto.entregaFinal = document.getElementById('entregaFinalProjeto').value;
+        data.detalhesProjeto.requisitosAdicionais = document.getElementById('requisitosAdicionaisProjeto').value;
 
         return data;
     }
@@ -421,6 +493,30 @@ document.addEventListener('DOMContentLoaded', () => {
             addLine("Materiais Sugeridos", data.detalhesSteam.materiais, 1);
             addLine("Etapas do Projeto (sugestão)", data.detalhesSteam.etapas, 1);
             addLine("Formato de Entrega Final", data.detalhesSteam.entregaFinal, 1);
+        }
+
+        if (data.tipoRecurso === ResourceType.ATIVIDADE) {
+            promptLines.push("\nIV.I. Detalhes para \"Atividade\":");
+            addLine("Tipo de Atividade", data.detalhesAtividade.tipo, 1);
+            addLine("Nível de Dificuldade", data.detalhesAtividade.nivelDificuldade, 1);
+            addLine("Requisitos Adicionais", data.detalhesAtividade.requisitosAdicionais, 1);
+        }
+
+        if (data.tipoRecurso === ResourceType.DINAMICA) {
+            promptLines.push("\nIV.J. Detalhes para \"Dinâmica em Grupo\":");
+            addLine("Objetivo da Dinâmica", data.detalhesDinamica.objetivo, 1);
+            addLine("Número de Participantes Sugerido", data.detalhesDinamica.participantes, 1);
+            addLine("Materiais Necessários", data.detalhesDinamica.materiais, 1);
+            addLine("Instruções Principais", data.detalhesDinamica.instrucoes, 1);
+        }
+
+        if (data.tipoRecurso === ResourceType.PROJETO) {
+            promptLines.push("\nIV.K. Detalhes para \"Projeto (Maker/Colaborativo)\":");
+            addLine("Tipo de Projeto", data.detalhesProjeto.tipo, 1);
+            addLine("Objetivos de Aprendizagem", data.detalhesProjeto.objetivos, 1);
+            addLine("Materiais/Ferramentas Sugeridos", data.detalhesProjeto.materiais, 1);
+            addLine("Formato de Entrega Final", data.detalhesProjeto.entregaFinal, 1);
+            addLine("Requisitos Adicionais", data.detalhesProjeto.requisitosAdicionais, 1);
         }
 
         if (data.publicoAlvo) {
@@ -532,6 +628,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
              if (!formData.detalhesSteam.objetivos.trim()) {
                 displayError('steamObjetivos', 'Os objetivos de aprendizagem são obrigatórios.');
+                isValid = false;
+            }
+        }
+
+        if (formData.tipoRecurso === ResourceType.PROJETO) {
+            if (!formData.detalhesProjeto.objetivos.trim()) {
+                displayError('objetivosProjeto', 'Os objetivos de aprendizagem são obrigatórios.');
                 isValid = false;
             }
         }
