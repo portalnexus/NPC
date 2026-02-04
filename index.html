@@ -21,238 +21,263 @@
         <main>
             <form id="prompt-form">
                 
-                <h2>I. Objetivo Principal do Conteúdo</h2>
-                <div class="form-group">
-                    <label for="objetivoPrincipal">Descreva o objetivo principal do conteúdo a ser gerado.</label>
-                    <textarea id="objetivoPrincipal" name="objetivoPrincipal" rows="3" placeholder="Ex: Gerar um desafio matemático para alunos do ensino médio." aria-label="Objetivo Principal do Conteúdo"></textarea>
-                </div>
-
-                <h2>II. Disciplina</h2>
-                <div class="form-group">
-                    <label for="disciplina">Selecione a disciplina.</label>
-                    <select id="disciplina" name="disciplina" aria-label="Disciplina"></select>
-                </div>
-
-                <h2>III. Tópico/Conteúdo Específico</h2>
-                <div class="form-group">
-                    <label for="topicoEspecifico">Especifique o tópico ou conteúdo.</label>
-                    <textarea id="topicoEspecifico" name="topicoEspecifico" rows="3" placeholder="Detalhe o tópico, sub-tópico, ou habilidade específica." aria-label="Tópico ou Conteúdo Específico"></textarea>
-                    <p>Seja o mais específico possível para melhores resultados. Ex: 'Funções de Primeiro Grau e suas aplicações no cotidiano' para Matemática, ou 'Uso da crase em adjuntos adverbiais' para Língua Portuguesa.</p>
-                </div>
-
-                <h2>IV. Tipo de Recurso/Formato</h2>
-                <div class="form-group">
-                    <label for="tipoRecurso">Qual tipo de recurso ou formato você precisa?</label>
-                    <select id="tipoRecurso" name="tipoRecurso" aria-label="Tipo de Recurso ou Formato"></select>
-                </div>
-                <div id="section-outro" class="hidden-section">
-                    <div class="form-group">
-                        <label for="tipoRecursoOutroEspecificar">Especifique o tipo de recurso</label>
-                        <input type="text" id="tipoRecursoOutroEspecificar" name="tipoRecursoOutroEspecificar" placeholder="Especifique o tipo de recurso" aria-label="Especifique Outro Tipo de Recurso">
+                <div class="accordion-item expanded">
+                    <h2 class="accordion-header">I. Objetivo Principal do Conteúdo</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="objetivoPrincipal">Descreva o objetivo principal do conteúdo a ser gerado.</label>
+                            <textarea id="objetivoPrincipal" name="objetivoPrincipal" rows="3" placeholder="Ex: Gerar um desafio matemático para alunos do ensino médio." aria-label="Objetivo Principal do Conteúdo"></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <div id="section-desafio" class="hidden-section">
-                    <h3>IV.A. Detalhes para "Desafio"</h3>
-                    <div class="form-group">
-                        <label for="nivelDesafio">Nível:</label>
-                        <select id="nivelDesafio" name="nivelDesafio" aria-label="Nível do Desafio"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="formato-problema-options">Formato do Problema:</label>
-                        <div id="formato-problema-options" aria-label="Formato do Problema do Desafio"></div>
-                    </div>
-                    <div class="form-group">
-                        <input id="incluirDica" name="incluirDica" type="checkbox" aria-label="Incluir Dica no Desafio">
-                        <label for="incluirDica">Incluir Dica?</label>
-                    </div>
-                    <div id="dica-container" class="hidden-section form-group">
-                        <label for="dicaConteudo">Dica:</label>
-                        <textarea id="dicaConteudo" name="dicaConteudo" placeholder="Digite a dica aqui..." aria-label="Conteúdo da Dica do Desafio"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input id="fornecerSolucao" name="fornecerSolucao" type="checkbox" aria-label="Fornecer Solução Completa para o Desafio">
-                        <label for="fornecerSolucao">Fornecer Solução Completa?</label>
-                    </div>
-                    <div id="solucao-container" class="hidden-section form-group">
-                        <label for="solucaoConteudo">Solução Completa:</label>
-                        <textarea id="solucaoConteudo" name="solucaoConteudo" placeholder="Digite a solução completa aqui..." aria-label="Conteúdo da Solução Completa do Desafio"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="requisitosAdicionaisDesafio">Requisitos Adicionais do Desafio:</label>
-                        <textarea id="requisitosAdicionaisDesafio" name="requisitosAdicionais" placeholder="Ex: O problema deve envolver o cálculo de área e perímetro de figuras compostas." aria-label="Requisitos Adicionais do Desafio"></textarea>
-                    </div>
-                </div>
-                
-                <div id="section-expositivo" class="hidden-section">
-                     <h3>IV.B. Detalhes para "Material Expositivo/Explicação"</h3>
-                     <div class="form-group">
-                        <label for="profundidadeExpositivo">Profundidade:</label>
-                        <select id="profundidadeExpositivo" name="profundidadeExpositivo" aria-label="Profundidade do Material Expositivo"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="estiloEscritaExpositivo">Estilo de Escrita:</label>
-                        <select id="estiloEscritaExpositivo" name="estiloEscrita" aria-label="Estilo de Escrita do Material Expositivo"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="elementos-incluir-options">Elementos a Incluir:</label>
-                        <div id="elementos-incluir-options" aria-label="Elementos a Incluir no Material Expositivo"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="requisitosAdicionaisExpositivo">Requisitos Adicionais da Explicação:</label>
-                        <textarea id="requisitosAdicionaisExpositivo" name="requisitosAdicionais" placeholder="Ex: Abordar as aplicações da fotossíntese na agricultura." aria-label="Requisitos Adicionais do Material Expositivo"></textarea>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">II. Disciplina</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="disciplina">Selecione a disciplina.</label>
+                            <select id="disciplina" name="disciplina" aria-label="Disciplina"></select>
+                        </div>
                     </div>
                 </div>
 
-                <div id="section-midias" class="hidden-section">
-                    <h3>IV.C. Detalhes para "Conteúdo para Mídias"</h3>
-                    <div class="form-group">
-                        <label for="tipoMidia">Tipo de Mídia:</label>
-                        <select id="tipoMidia" name="tipoMidia" aria-label="Tipo de Mídia"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="focoTextoMidia">Foco do Texto:</label>
-                        <select id="focoTextoMidia" name="focoTexto" aria-label="Foco do Texto para Mídia"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="comprimentoAproximadoMidia">Comprimento Aproximado (Nº de palavras):</label>
-                        <input type="number" id="comprimentoAproximadoMidia" name="comprimentoAproximado" placeholder="Ex: 300" aria-label="Comprimento Aproximado do Conteúdo para Mídia">
-                    </div>
-                    <div class="form-group">
-                        <label for="requisitosAdicionaisMidia">Requisitos Adicionais do Conteúdo de Mídia:</label>
-                        <textarea id="requisitosAdicionaisMidia" name="requisitosAdicionais" placeholder="Ex: Incluir um call-to-action para o usuário visitar o site." aria-label="Requisitos Adicionais do Conteúdo para Mídia"></textarea>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">III. Tópico/Conteúdo Específico</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="topicoEspecifico">Especifique o tópico ou conteúdo.</label>
+                            <textarea id="topicoEspecifico" name="topicoEspecifico" rows="3" placeholder="Detalhe o tópico, sub-tópico, ou habilidade específica." aria-label="Tópico ou Conteúdo Específico"></textarea>
+                            <p class="help-text">Seja o mais específico possível para melhores resultados. Ex: 'Funções de Primeiro Grau e suas aplicações no cotidiano' para Matemática, ou 'Uso da crase em adjuntos adverbiais' para Língua Portuguesa.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div id="section-desafio-semanal" class="hidden-section">
-                    <h3>IV.D. Detalhes para "Desafio Semanal (Enunciado)"</h3>
-                    <div class="form-group">
-                        <label for="naturezaDesafioSemanal">Natureza do Desafio:</label>
-                        <select id="naturezaDesafioSemanal" name="naturezaDesafio" aria-label="Natureza do Desafio Semanal"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="tituloSugeridoDesafioSemanal">Título Sugerido:</label>
-                        <input type="text" id="tituloSugeridoDesafioSemanal" name="tituloSugerido" placeholder="Ex: O Dilema do Viajante no Tempo" aria-label="Título Sugerido para o Desafio Semanal">
-                    </div>
-                    <div class="form-group">
-                        <label for="instrucaoPrincipalDesafioSemanal">Instrução Principal para o Leitor:</label>
-                        <textarea id="instrucaoPrincipalDesafioSemanal" name="instrucaoPrincipal" placeholder="Ex: Qual escolha você faria e por quê?" aria-label="Instrução Principal para o Leitor do Desafio Semanal"></textarea>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">IV. Tipo de Recurso/Formato</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="tipoRecurso">Qual tipo de recurso ou formato você precisa?</label>
+                            <select id="tipoRecurso" name="tipoRecurso" aria-label="Tipo de Recurso ou Formato"></select>
+                        </div>
+
+                        <div id="section-outro" class="hidden-section">
+                            <div class="form-group">
+                                <label for="tipoRecursoOutroEspecificar">Especifique o tipo de recurso</label>
+                                <input type="text" id="tipoRecursoOutroEspecificar" name="tipoRecursoOutroEspecificar" placeholder="Especifique o tipo de recurso" aria-label="Especifique Outro Tipo de Recurso">
+                            </div>
+                        </div>
+
+                        <div id="section-desafio" class="hidden-section subgroup">
+                            <h3>IV.A. Detalhes para "Desafio"</h3>
+                            <div class="form-group">
+                                <label for="nivelDesafio">Nível:</label>
+                                <select id="nivelDesafio" name="nivelDesafio" aria-label="Nível do Desafio"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="formato-problema-options">Formato do Problema:</label>
+                                <div id="formato-problema-options" class="checkbox-group" aria-label="Formato do Problema do Desafio"></div>
+                            </div>
+                            <div class="form-group checkbox-inline">
+                                <input id="incluirDica" name="incluirDica" type="checkbox" aria-label="Incluir Dica no Desafio">
+                                <label for="incluirDica">Incluir Dica?</label>
+                            </div>
+                            <div id="dica-container" class="hidden-section form-group">
+                                <label for="dicaConteudo">Dica:</label>
+                                <textarea id="dicaConteudo" name="dicaConteudo" placeholder="Digite a dica aqui..." aria-label="Conteúdo da Dica do Desafio"></textarea>
+                            </div>
+                            <div class="form-group checkbox-inline">
+                                <input id="fornecerSolucao" name="fornecerSolucao" type="checkbox" aria-label="Fornecer Solução Completa para o Desafio">
+                                <label for="fornecerSolucao">Fornecer Solução Completa?</label>
+                            </div>
+                            <div id="solucao-container" class="hidden-section form-group">
+                                <label for="solucaoConteudo">Solução Completa:</label>
+                                <textarea id="solucaoConteudo" name="solucaoConteudo" placeholder="Digite a solução completa aqui..." aria-label="Conteúdo da Solução Completa do Desafio"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="requisitosAdicionaisDesafio">Requisitos Adicionais do Desafio:</label>
+                                <textarea id="requisitosAdicionaisDesafio" name="requisitosAdicionais" placeholder="Ex: O problema deve envolver o cálculo de área e perímetro de figuras compostas." aria-label="Requisitos Adicionais do Desafio"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-expositivo" class="hidden-section subgroup">
+                             <h3>IV.B. Detalhes para "Material Expositivo/Explicação"</h3>
+                             <div class="form-group">
+                                <label for="profundidadeExpositivo">Profundidade:</label>
+                                <select id="profundidadeExpositivo" name="profundidadeExpositivo" aria-label="Profundidade do Material Expositivo"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="estiloEscritaExpositivo">Estilo de Escrita:</label>
+                                <select id="estiloEscritaExpositivo" name="estiloEscrita" aria-label="Estilo de Escrita do Material Expositivo"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="elementos-incluir-options">Elementos a Incluir:</label>
+                                <div id="elementos-incluir-options" class="checkbox-group" aria-label="Elementos a Incluir no Material Expositivo"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="requisitosAdicionaisExpositivo">Requisitos Adicionais da Explicação:</label>
+                                <textarea id="requisitosAdicionaisExpositivo" name="requisitosAdicionais" placeholder="Ex: Abordar as aplicações da fotossíntese na agricultura." aria-label="Requisitos Adicionais do Material Expositivo"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-midias" class="hidden-section subgroup">
+                            <h3>IV.C. Detalhes para "Conteúdo para Mídias"</h3>
+                            <div class="form-group">
+                                <label for="tipoMidia">Tipo de Mídia:</label>
+                                <select id="tipoMidia" name="tipoMidia" aria-label="Tipo de Mídia"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="focoTextoMidia">Foco do Texto:</label>
+                                <select id="focoTextoMidia" name="focoTexto" aria-label="Foco do Texto para Mídia"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comprimentoAproximadoMidia">Comprimento Aproximado (Nº de palavras):</label>
+                                <input type="number" id="comprimentoAproximadoMidia" name="comprimentoAproximado" placeholder="Ex: 300" aria-label="Comprimento Aproximado do Conteúdo para Mídia">
+                            </div>
+                            <div class="form-group">
+                                <label for="requisitosAdicionaisMidia">Requisitos Adicionais do Conteúdo de Mídia:</label>
+                                <textarea id="requisitosAdicionaisMidia" name="requisitosAdicionais" placeholder="Ex: Incluir um call-to-action para o usuário visitar o site." aria-label="Requisitos Adicionais do Conteúdo para Mídia"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-desafio-semanal" class="hidden-section subgroup">
+                            <h3>IV.D. Detalhes para "Desafio Semanal (Enunciado)"</h3>
+                            <div class="form-group">
+                                <label for="naturezaDesafioSemanal">Natureza do Desafio:</label>
+                                <select id="naturezaDesafioSemanal" name="naturezaDesafio" aria-label="Natureza do Desafio Semanal"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tituloSugeridoDesafioSemanal">Título Sugerido:</label>
+                                <input type="text" id="tituloSugeridoDesafioSemanal" name="tituloSugerido" placeholder="Ex: O Dilema do Viajante no Tempo" aria-label="Título Sugerido para o Desafio Semanal">
+                            </div>
+                            <div class="form-group">
+                                <label for="instrucaoPrincipalDesafioSemanal">Instrução Principal para o Leitor:</label>
+                                <textarea id="instrucaoPrincipalDesafioSemanal" name="instrucaoPrincipal" placeholder="Ex: Qual escolha você faria e por quê?" aria-label="Instrução Principal para o Leitor do Desafio Semanal"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-artigo" class="hidden-section subgroup">
+                            <h3>IV.E. Detalhes para "Artigo Científico/Análise"</h3>
+                             <div class="form-group">
+                                <label for="estrutura-artigo-options">Estrutura Típica (pré-selecionado):</label>
+                                <div id="estrutura-artigo-options" class="checkbox-group" aria-label="Estrutura Típica do Artigo Científico"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nivelFormalidadeArtigo">Nível de Formalidade:</label>
+                                <select id="nivelFormalidadeArtigo" name="nivelFormalidade" aria-label="Nível de Formalidade do Artigo Científico"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="requisitosAdicionaisArtigo">Requisitos Adicionais do Artigo:</label>
+                                <textarea id="requisitosAdicionaisArtigo" name="requisitosAdicionais" placeholder="Ex: Focar na análise crítica das fontes X e Y." aria-label="Requisitos Adicionais do Artigo Científico"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-problema" class="hidden-section subgroup">
+                            <h3>IV.F. Detalhes para "Problema"</h3>
+                            <div class="form-group">
+                                <label for="descricaoProblema">Descrição do Problema:</label>
+                                <textarea id="descricaoProblema" name="descricaoProblema" placeholder="Descreva o problema em detalhes..." rows="3" aria-label="Descrição do Problema"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="formatoRespostaProblema">Formato da Resposta Esperada:</label>
+                                <select id="formatoRespostaProblema" name="formatoRespostaProblema" aria-label="Formato da Resposta Esperada para o Problema"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nivelDificuldadeProblema">Nível de Dificuldade:</label>
+                                <select id="nivelDificuldadeProblema" name="nivelDificuldadeProblema" aria-label="Nível de Dificuldade do Problema"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="requisitosAdicionaisProblema">Requisitos Adicionais do Problema:</label>
+                                <textarea id="requisitosAdicionaisProblema" name="requisitosAdicionaisProblema" placeholder="Ex: O problema deve ser resolvido sem o uso de calculadoras." rows="2" aria-label="Requisitos Adicionais do Problema"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-estudo-caso" class="hidden-section subgroup">
+                            <h3>IV.G. Detalhes para "Estudo de Caso"</h3>
+                            <div class="form-group">
+                                <label for="estudoCasoSituacao">Situação/Contexto do Estudo de Caso:</label>
+                                <textarea id="estudoCasoSituacao" name="estudoCasoSituacao" rows="4" placeholder="Descreva a situação ou o contexto do estudo de caso." aria-label="Situação ou Contexto do Estudo de Caso"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="estudoCasoQuestoes">Questões para Análise/Discussão:</label>
+                                <textarea id="estudoCasoQuestoes" name="estudoCasoQuestoes" rows="4" placeholder="Liste as questões que os alunos devem analisar ou discutir." aria-label="Questões para Análise ou Discussão do Estudo de Caso"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="estudoCasoPontosChave">Pontos Chave para Investigação (opcional):</label>
+                                <textarea id="estudoCasoPontosChave" name="estudoCasoPontosChave" rows="3" placeholder="Indique os pontos chave que devem ser investigados ou considerados." aria-label="Pontos Chave para Investigação do Estudo de Caso"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="section-steam" class="hidden-section subgroup">
+                            <h3>IV.H. Detalhes para "Projeto STEAM"</h3>
+                            <div class="form-group">
+                                <label for="steamConceitoCentral">Conceito Central do Projeto:</label>
+                                <textarea id="steamConceitoCentral" name="steamConceitoCentral" rows="3" placeholder="Descreva a ideia ou problema central que o projeto abordará." aria-label="Conceito Central do Projeto STEAM"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="steam-componentes-options">Componentes STEAM Envolvidos:</label>
+                                <div id="steam-componentes-options" class="checkbox-group" aria-label="Componentes STEAM Envolvidos no Projeto"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="steamObjetivos">Objetivos de Aprendizagem:</label>
+                                <textarea id="steamObjetivos" name="steamObjetivos" rows="3" placeholder="Liste os principais objetivos de aprendizagem para os alunos." aria-label="Objetivos de Aprendizagem do Projeto STEAM"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="steamMateriais">Materiais Sugeridos:</label>
+                                <textarea id="steamMateriais" name="steamMateriais" rows="3" placeholder="Liste os materiais, ferramentas ou softwares necessários." aria-label="Materiais Sugeridos para o Projeto STEAM"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="steamEtapas">Etapas do Projeto (sugestão):</label>
+                                <textarea id="steamEtapas" name="steamEtapas" rows="5" placeholder="Descreva um passo a passo sugerido para a realização do projeto." aria-label="Etapas Sugeridas para o Projeto STEAM"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="steamEntregaFinal">Formato de Entrega Final:</label>
+                                <input type="text" id="steamEntregaFinal" name="steamEntregaFinal" placeholder="Ex: Protótipo funcional, apresentação, relatório, vídeo." aria-label="Formato de Entrega Final do Projeto STEAM">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div id="section-artigo" class="hidden-section">
-                    <h3>IV.E. Detalhes para "Artigo Científico/Análise"</h3>
-                     <div class="form-group">
-                        <label for="estrutura-artigo-options">Estrutura Típica (pré-selecionado):</label>
-                        <div id="estrutura-artigo-options" aria-label="Estrutura Típica do Artigo Científico"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="nivelFormalidadeArtigo">Nível de Formalidade:</label>
-                        <select id="nivelFormalidadeArtigo" name="nivelFormalidade" aria-label="Nível de Formalidade do Artigo Científico"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="requisitosAdicionaisArtigo">Requisitos Adicionais do Artigo:</label>
-                        <textarea id="requisitosAdicionaisArtigo" name="requisitosAdicionais" placeholder="Ex: Focar na análise crítica das fontes X e Y." aria-label="Requisitos Adicionais do Artigo Científico"></textarea>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">V. Público Alvo (Opcional)</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="publicoAlvo">Para quem este conteúdo se destina?</label>
+                            <input type="text" id="publicoAlvo" name="publicoAlvo" placeholder="Ex: Estudantes do 7º ano do Ensino Fundamental, Iniciantes em programação." aria-label="Público Alvo">
+                        </div>
                     </div>
                 </div>
 
-                <div id="section-problema" class="hidden-section">
-                    <h3>IV.F. Detalhes para "Problema"</h3>
-                    <div class="form-group">
-                        <label for="descricaoProblema">Descrição do Problema:</label>
-                        <textarea id="descricaoProblema" name="descricaoProblema" placeholder="Descreva o problema em detalhes..." rows="3" aria-label="Descrição do Problema"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="formatoRespostaProblema">Formato da Resposta Esperada:</label>
-                        <select id="formatoRespostaProblema" name="formatoRespostaProblema" aria-label="Formato da Resposta Esperada para o Problema">
-                            <!-- Opções serão populadas pelo JS -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="nivelDificuldadeProblema">Nível de Dificuldade:</label>
-                        <select id="nivelDificuldadeProblema" name="nivelDificuldadeProblema" aria-label="Nível de Dificuldade do Problema">
-                            <!-- Opções serão populadas pelo JS -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="requisitosAdicionaisProblema">Requisitos Adicionais do Problema:</label>
-                        <textarea id="requisitosAdicionaisProblema" name="requisitosAdicionaisProblema" placeholder="Ex: O problema deve ser resolvido sem o uso de calculadoras." rows="2" aria-label="Requisitos Adicionais do Problema"></textarea>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">VI. Metodologia de Ensino (Opcional)</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="metodologiaEnsino">Metodologia Preferida:</label>
+                            <textarea id="metodologiaEnsino" name="metodologiaEnsino" rows="3" placeholder="Ex: Aprendizagem Baseada em Projetos, Gamificação, Sala de Aula Invertida..." aria-label="Metodologia de Ensino Preferida"></textarea>
+                            <p class="help-text">Indique a abordagem pedagógica que gostaria que o conteúdo refletisse.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div id="section-estudo-caso" class="hidden-section">
-                    <h3>IV.G. Detalhes para "Estudo de Caso"</h3>
-                    <div class="form-group">
-                        <label for="estudoCasoSituacao">Situação/Contexto do Estudo de Caso:</label>
-                        <textarea id="estudoCasoSituacao" name="estudoCasoSituacao" rows="4" placeholder="Descreva a situação ou o contexto do estudo de caso." aria-label="Situação ou Contexto do Estudo de Caso"></textarea>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">VII. Detalhes Adicionais / Requisitos Finais</h2>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="detalhesAdicionais">Outros detalhes, restrições ou requisitos para o prompt final?</label>
+                            <textarea id="detalhesAdicionais" name="detalhesAdicionais" rows="4" placeholder="Ex: Linguagem: Português do Brasil. Tom: Engajador. Formato de saída: HTML. Evitar jargões excessivos ou explicá-los." aria-label="Detalhes Adicionais ou Requisitos Finais"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="linguagemSaida">Linguagem de Saída do Conteúdo Gerado:</label>
+                            <select id="linguagemSaida" name="linguagemSaida" aria-label="Linguagem de Saída do Conteúdo Gerado"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tomVoz">Tom de Voz Desejado no Conteúdo Gerado:</label>
+                            <select id="tomVoz" name="tomVoz" aria-label="Tom de Voz Desejado no Conteúdo Gerado"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formatoSaida">Formato de Saída Desejado do Conteúdo Gerado:</label>
+                            <select id="formatoSaida" name="formatoSaida" aria-label="Formato de Saída Desejado do Conteúdo Gerado"></select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="estudoCasoQuestoes">Questões para Análise/Discussão:</label>
-                        <textarea id="estudoCasoQuestoes" name="estudoCasoQuestoes" rows="4" placeholder="Liste as questões que os alunos devem analisar ou discutir." aria-label="Questões para Análise ou Discussão do Estudo de Caso"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="estudoCasoPontosChave">Pontos Chave para Investigação (opcional):</label>
-                        <textarea id="estudoCasoPontosChave" name="estudoCasoPontosChave" rows="3" placeholder="Indique os pontos chave que devem ser investigados ou considerados." aria-label="Pontos Chave para Investigação do Estudo de Caso"></textarea>
-                    </div>
-                </div>
-
-                <div id="section-steam" class="hidden-section">
-                    <h3>IV.H. Detalhes para "Projeto STEAM"</h3>
-                    <div class="form-group">
-                        <label for="steamConceitoCentral">Conceito Central do Projeto:</label>
-                        <textarea id="steamConceitoCentral" name="steamConceitoCentral" rows="3" placeholder="Descreva a ideia ou problema central que o projeto abordará." aria-label="Conceito Central do Projeto STEAM"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="steam-componentes-options">Componentes STEAM Envolvidos:</label>
-                        <div id="steam-componentes-options" aria-label="Componentes STEAM Envolvidos no Projeto"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="steamObjetivos">Objetivos de Aprendizagem:</label>
-                        <textarea id="steamObjetivos" name="steamObjetivos" rows="3" placeholder="Liste os principais objetivos de aprendizagem para os alunos." aria-label="Objetivos de Aprendizagem do Projeto STEAM"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="steamMateriais">Materiais Sugeridos:</label>
-                        <textarea id="steamMateriais" name="steamMateriais" rows="3" placeholder="Liste os materiais, ferramentas ou softwares necessários." aria-label="Materiais Sugeridos para o Projeto STEAM"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="steamEtapas">Etapas do Projeto (sugestão):</label>
-                        <textarea id="steamEtapas" name="steamEtapas" rows="5" placeholder="Descreva um passo a passo sugerido para a realização do projeto." aria-label="Etapas Sugeridas para o Projeto STEAM"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="steamEntregaFinal">Formato de Entrega Final:</label>
-                        <input type="text" id="steamEntregaFinal" name="steamEntregaFinal" placeholder="Ex: Protótipo funcional, apresentação, relatório, vídeo." aria-label="Formato de Entrega Final do Projeto STEAM">
-                    </div>
-                </div>
-
-                <h2>V. Público Alvo (Opcional)</h2>
-                <div class="form-group">
-                    <label for="publicoAlvo">Para quem este conteúdo se destina?</label>
-                    <input type="text" id="publicoAlvo" name="publicoAlvo" placeholder="Ex: Estudantes do 7º ano do Ensino Fundamental, Iniciantes em programação." aria-label="Público Alvo">
-                </div>
-
-                <h2>VI. Metodologia de Ensino (Opcional)</h2>
-                <div class="form-group">
-                    <label for="metodologiaEnsino">Metodologia Preferida:</label>
-                    <textarea id="metodologiaEnsino" name="metodologiaEnsino" rows="3" placeholder="Ex: Aprendizagem Baseada em Projetos, Gamificação, Sala de Aula Invertida..." aria-label="Metodologia de Ensino Preferida"></textarea>
-                    <p>Indique a abordagem pedagógica que gostaria que o conteúdo refletisse.</p>
-                </div>
-
-                <h2>VII. Detalhes Adicionais / Requisitos Finais</h2>
-                 <div class="form-group">
-                    <label for="detalhesAdicionais">Outros detalhes, restrições ou requisitos para o prompt final?</label>
-                    <textarea id="detalhesAdicionais" name="detalhesAdicionais" rows="4" placeholder="Ex: Linguagem: Português do Brasil. Tom: Engajador. Formato de saída: HTML. Evitar jargões excessivos ou explicá-los." aria-label="Detalhes Adicionais ou Requisitos Finais"></textarea>
-                </div>
-                 <div class="form-group">
-                    <label for="linguagemSaida">Linguagem de Saída do Conteúdo Gerado:</label>
-                    <select id="linguagemSaida" name="linguagemSaida" aria-label="Linguagem de Saída do Conteúdo Gerado"></select>
-                </div>
-                <div class="form-group">
-                    <label for="tomVoz">Tom de Voz Desejado no Conteúdo Gerado:</label>
-                    <select id="tomVoz" name="tomVoz" aria-label="Tom de Voz Desejado no Conteúdo Gerado"></select>
-                </div>
-                <div class="form-group">
-                    <label for="formatoSaida">Formato de Saída Desejado do Conteúdo Gerado:</label>
-                    <select id="formatoSaida" name="formatoSaida" aria-label="Formato de Saída Desejado do Conteúdo Gerado"></select>
                 </div>
                 
                 <div class="button-group">
